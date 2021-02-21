@@ -15,8 +15,27 @@
                     <view key="view" contentMode="scaleToFill" id="7QL-vL-BoO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" prompt="Enter city or zipcode" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="kVB-gt-VxF">
+                                <rect key="frame" x="0.0" y="44" width="414" height="90"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AjI-F9-gXT">
+                                <rect key="frame" x="0.0" y="134" width="414" height="679"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="a2f-zT-XdG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="a2f-zT-XdG" firstAttribute="trailing" secondItem="AjI-F9-gXT" secondAttribute="trailing" id="08c-3K-ch1"/>
+                            <constraint firstItem="AjI-F9-gXT" firstAttribute="top" secondItem="kVB-gt-VxF" secondAttribute="bottom" id="3wM-Ou-4Cu"/>
+                            <constraint firstItem="a2f-zT-XdG" firstAttribute="bottom" secondItem="AjI-F9-gXT" secondAttribute="bottom" id="acR-Vb-39y"/>
+                            <constraint firstItem="kVB-gt-VxF" firstAttribute="leading" secondItem="a2f-zT-XdG" secondAttribute="leading" id="drm-Tx-Ck8"/>
+                            <constraint firstItem="kVB-gt-VxF" firstAttribute="top" secondItem="a2f-zT-XdG" secondAttribute="top" id="fSc-k4-Hez"/>
+                            <constraint firstItem="a2f-zT-XdG" firstAttribute="trailing" secondItem="kVB-gt-VxF" secondAttribute="trailing" id="iSI-8j-R6S"/>
+                            <constraint firstItem="AjI-F9-gXT" firstAttribute="leading" secondItem="a2f-zT-XdG" secondAttribute="leading" id="mQ9-jO-4ck"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="hDG-1e-KsG"/>
                 </viewController>
@@ -47,8 +66,20 @@
                     <view key="view" contentMode="scaleToFill" id="zdc-np-1vo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xmi-DL-cdD">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="VBz-qi-NKf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="xmi-DL-cdD" firstAttribute="top" secondItem="VBz-qi-NKf" secondAttribute="top" id="BPb-h8-SyQ"/>
+                            <constraint firstItem="VBz-qi-NKf" firstAttribute="bottom" secondItem="xmi-DL-cdD" secondAttribute="bottom" id="blf-6m-Mig"/>
+                            <constraint firstItem="xmi-DL-cdD" firstAttribute="leading" secondItem="VBz-qi-NKf" secondAttribute="leading" id="sni-b4-tbU"/>
+                            <constraint firstItem="VBz-qi-NKf" firstAttribute="trailing" secondItem="xmi-DL-cdD" secondAttribute="trailing" id="yvv-iT-xn4"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="suit.heart" catalog="system" id="mzt-x2-iyZ"/>
                 </viewController>

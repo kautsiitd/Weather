@@ -36,6 +36,7 @@
 		63A0379D25E2F1E30057B776 /* ServerSideError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A0379C25E2F1E30057B776 /* ServerSideError.swift */; };
 		63A037A625E31A8F0057B776 /* SearchPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A037A525E31A8F0057B776 /* SearchPageVC.swift */; };
 		63A037A925E31ABB0057B776 /* LikedPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A037A825E31ABB0057B776 /* LikedPageVC.swift */; };
+		63A037AD25E31E630057B776 /* CityList.json in Resources */ = {isa = PBXBuildFile; fileRef = 63A037AC25E31E630057B776 /* CityList.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		63A0379C25E2F1E30057B776 /* ServerSideError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerSideError.swift; sourceTree = "<group>"; };
 		63A037A525E31A8F0057B776 /* SearchPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageVC.swift; sourceTree = "<group>"; };
 		63A037A825E31ABB0057B776 /* LikedPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedPageVC.swift; sourceTree = "<group>"; };
+		63A037AC25E31E630057B776 /* CityList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CityList.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 		635806B525E1552200BAE8AF /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				63A037AB25E31E410057B776 /* Resources */,
 				63A0376125E228670057B776 /* Protocols */,
 				63A0375B25E166BC0057B776 /* Extensions */,
 				63A0374C25E164A80057B776 /* Networking */,
@@ -200,6 +203,14 @@
 			path = Forecast;
 			sourceTree = "<group>";
 		};
+		63A037AB25E31E410057B776 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				63A037AC25E31E630057B776 /* CityList.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -259,6 +270,7 @@
 			files = (
 				635806C325E1552300BAE8AF /* LaunchScreen.storyboard in Resources */,
 				635806C025E1552300BAE8AF /* Assets.xcassets in Resources */,
+				63A037AD25E31E630057B776 /* CityList.json in Resources */,
 				635806BE25E1552200BAE8AF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
