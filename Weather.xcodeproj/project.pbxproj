@@ -155,10 +155,10 @@
 		63A0376825E229AC0057B776 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				63A037B525E327370057B776 /* LikedPage */,
+				63A037B425E3272C0057B776 /* Search */,
+				63A037B325E3271C0057B776 /* CityWeather */,
 				63A037AF25E320300057B776 /* BaseViewController.swift */,
-				63A0378625E283C60057B776 /* CityWeatherVC.swift */,
-				63A037A525E31A8F0057B776 /* SearchPageVC.swift */,
-				63A037A825E31ABB0057B776 /* LikedPageVC.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -212,6 +212,30 @@
 				63A037AC25E31E630057B776 /* CityList.json */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		63A037B325E3271C0057B776 /* CityWeather */ = {
+			isa = PBXGroup;
+			children = (
+				63A0378625E283C60057B776 /* CityWeatherVC.swift */,
+			);
+			path = CityWeather;
+			sourceTree = "<group>";
+		};
+		63A037B425E3272C0057B776 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				63A037A525E31A8F0057B776 /* SearchPageVC.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		63A037B525E327370057B776 /* LikedPage */ = {
+			isa = PBXGroup;
+			children = (
+				63A037A825E31ABB0057B776 /* LikedPageVC.swift */,
+			);
+			path = LikedPage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

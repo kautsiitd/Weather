@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fiT-gB-iD4">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -163,6 +163,14 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="house" catalog="system" id="K03-fP-xhJ"/>
+                    <connections>
+                        <outlet property="cityNameLabel" destination="Kk0-Av-cD0" id="2C0-Lc-R3A"/>
+                        <outlet property="collectionView" destination="YBE-7T-n1e" id="uNj-ea-FiK"/>
+                        <outlet property="latitudeLabel" destination="f6s-pM-DZW" id="dfI-iE-ce1"/>
+                        <outlet property="longitudeLabel" destination="AV0-Lu-JKJ" id="XNy-id-Gem"/>
+                        <outlet property="temperatureLabel" destination="lqo-sp-ghI" id="h76-re-JHw"/>
+                        <outlet property="weatherNameLabel" destination="xPe-cY-NzQ" id="9Eu-RS-mWF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kiN-dm-b8X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
