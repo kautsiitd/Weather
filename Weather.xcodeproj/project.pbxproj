@@ -34,6 +34,8 @@
 		63A0379325E2E70C0057B776 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A0379225E2E70C0057B776 /* City.swift */; };
 		63A0379625E2E79C0057B776 /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A0379525E2E79C0057B776 /* Temperature.swift */; };
 		63A0379D25E2F1E30057B776 /* ServerSideError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A0379C25E2F1E30057B776 /* ServerSideError.swift */; };
+		63A037A625E31A8F0057B776 /* SearchPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A037A525E31A8F0057B776 /* SearchPageVC.swift */; };
+		63A037A925E31ABB0057B776 /* LikedPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A037A825E31ABB0057B776 /* LikedPageVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +68,8 @@
 		63A0379225E2E70C0057B776 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		63A0379525E2E79C0057B776 /* Temperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
 		63A0379C25E2F1E30057B776 /* ServerSideError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerSideError.swift; sourceTree = "<group>"; };
+		63A037A525E31A8F0057B776 /* SearchPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageVC.swift; sourceTree = "<group>"; };
+		63A037A825E31ABB0057B776 /* LikedPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedPageVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +151,8 @@
 			isa = PBXGroup;
 			children = (
 				63A0378625E283C60057B776 /* HomePageVC.swift */,
+				63A037A525E31A8F0057B776 /* SearchPageVC.swift */,
+				63A037A825E31ABB0057B776 /* LikedPageVC.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -283,9 +289,11 @@
 				63A0379625E2E79C0057B776 /* Temperature.swift in Sources */,
 				63A0375D25E166CC0057B776 /* URL.swift in Sources */,
 				63A0378F25E2E6E80057B776 /* ForecastWeather.swift in Sources */,
+				63A037A925E31ABB0057B776 /* LikedPageVC.swift in Sources */,
 				63A0377E25E22FCF0057B776 /* Language.swift in Sources */,
 				63A0379325E2E70C0057B776 /* City.swift in Sources */,
 				63A0378A25E2E5C50057B776 /* DailyForecastApi.swift in Sources */,
+				63A037A625E31A8F0057B776 /* SearchPageVC.swift in Sources */,
 				63A0376B25E229F80057B776 /* Timezone.swift in Sources */,
 				63A0377225E22C700057B776 /* Wind.swift in Sources */,
 			);
