@@ -14,7 +14,7 @@ class DailyForecastApi: BaseApiModal {
     private var language: Language = .english
     var cityForecast: ForecastWeather?
     //MARK:- Fetchable
-    override var apiEndPoint: String { "daily" }
+    override var apiEndPoint: String { "data/2.5/daily" }
     override var params: [String : AnyHashable] {
         ["q": cityName, "cnt": numberOfDays, "units": units, "lang": language.code]
     }

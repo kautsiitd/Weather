@@ -10,13 +10,14 @@ class ApiManager {
     //MARK: Properties
     static let shared = ApiManager()
     private init() {}
-    private let baseURL = URL(string: "https://api.openweathermap.org/data/2.5/")!
+    private let baseURL = URL(string: "https://api.openweathermap.org")!
     private let apiKey = "da96beb35a165f871ae1aff335f296b9"
     
     func getRequest(_ delegate: Fetchable) throws {
         let endPoint = delegate.apiEndPoint
-        let params = update(delegate.params)
-        guard let url = URL(endPoint, with: params, relativeTo: baseURL)
+        let params = delegate.params
+        let updatedParams = update(params)
+        guard let url = URL(endPoint, with: updatedParams, relativeTo: baseURL)
         else { throw ApiError.invalidURL }
         
         URLSession.shared.dataTask(with: url) { data, response, error in

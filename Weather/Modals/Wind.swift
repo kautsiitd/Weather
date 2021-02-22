@@ -19,4 +19,9 @@ struct Wind: Codable {
     /// - **Metric**: meter/sec
     /// - **Imperial**: miles/hour.
     let gust: Int?
+    
+    //MARK:- Calculated Properties
+    private(set) lazy var readableFormat: String = {
+        return "\(deg.direction) \(speed) m/s"
+    }()
 }
