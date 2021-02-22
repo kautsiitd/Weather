@@ -12,7 +12,7 @@ struct CurrentWeather: Codable {
     let base: String
     let main: Main
     let visibility: Int
-    let wind: Wind
+    var wind: Wind
     let clouds: Cloud
     let dt: Int
     let sys: Sys
@@ -20,8 +20,22 @@ struct CurrentWeather: Codable {
     let id: Int
     let name: String
     let cod: Int
+    
+    //MARK:- Calculated Properties
+    private(set) lazy var summaryDict: [Int: KeyValueString] = {
+        [0: (key: "SUNRISE",    value: "\(sys.sunrise)"),
+         1: (key: "SUNSET",     value: "\(sys.sunset)"),
+         2: (key: "TEMP MIN",   value: "\(main.tempMin)°"),
+         3: (key: "TEMP MAX",   value: "\(main.tempMax)°"),
+         4: (key: "HUMIDITY",   value: "\(main.humidity)%"),
+         5: (key: "WIND",       value: wind.readableFormat),
+         6: (key: "FEELS LIKE", value: "\(main.feelsLike)°"),
+         7: (key: "PRESSURE",   value: "\(main.pressure) hPa"),
+         8: (key: "VISIBILITY", value: "\(visibility) m")]
+    }()
 }
 
+//MARK:- Temporary Structures
 extension CurrentWeather {
     struct Main: Codable {
         let temp: Double
@@ -38,9 +52,8 @@ extension CurrentWeather {
     struct Sys: Codable {
         let type: Int
         let id: Int
-        let message: Double
         let country: String
-        let sunrise: String
-        let sunset: String
+        let sunrise: Int
+        let sunset: Int
     }
 }
