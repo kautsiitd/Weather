@@ -26,8 +26,12 @@ class BaseApiModal: NSObject, Fetchable {
         return params == latestParams
     }
     func parse(_ data: Data, for params: [String : AnyHashable]) throws {}
-    func didFetchSuccessfully(for params: [String : AnyHashable]) {}
-    func didFail(with error: BaseError, for params: [String : AnyHashable]) {}
+    func didFetchSuccessfully(for params: [String : AnyHashable]) {
+        delegate?.didFetchSuccessfully(for: params)
+    }
+    func didFail(with error: BaseError, for params: [String : AnyHashable]) {
+        delegate?.didFail(with: error, for: params)
+    }
 }
 
 //MARK:- Helpers
