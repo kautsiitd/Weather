@@ -40,6 +40,8 @@
 		63A037BC25E36E190057B776 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A037BB25E36E190057B776 /* Int.swift */; };
 		63A037BF25E373200057B776 /* WeatherSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A037BE25E373200057B776 /* WeatherSummaryCell.swift */; };
 		63A037C325E3750C0057B776 /* TypeAlias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A037C225E3750C0057B776 /* TypeAlias.swift */; };
+		63A037C925E39C5F0057B776 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A037C825E39C5F0057B776 /* Operators.swift */; };
+		63A037CC25E3ABB30057B776 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A037CB25E3ABB30057B776 /* Double.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +80,8 @@
 		63A037BB25E36E190057B776 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		63A037BE25E373200057B776 /* WeatherSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherSummaryCell.swift; sourceTree = "<group>"; };
 		63A037C225E3750C0057B776 /* TypeAlias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAlias.swift; sourceTree = "<group>"; };
+		63A037C825E39C5F0057B776 /* Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
+		63A037CB25E3ABB30057B776 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +148,8 @@
 			children = (
 				63A0375C25E166CC0057B776 /* URL.swift */,
 				63A037BB25E36E190057B776 /* Int.swift */,
+				63A037C825E39C5F0057B776 /* Operators.swift */,
+				63A037CB25E3ABB30057B776 /* Double.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -330,10 +336,12 @@
 				63A0375225E165720057B776 /* BaseApiModal.swift in Sources */,
 				63A037BC25E36E190057B776 /* Int.swift in Sources */,
 				63A0378425E27F750057B776 /* Weather.swift in Sources */,
+				63A037CC25E3ABB30057B776 /* Double.swift in Sources */,
 				63A037B025E320300057B776 /* BaseViewController.swift in Sources */,
 				63A0376F25E22BCE0057B776 /* Coordinates.swift in Sources */,
 				635806B725E1552200BAE8AF /* AppDelegate.swift in Sources */,
 				635806B925E1552200BAE8AF /* SceneDelegate.swift in Sources */,
+				63A037C925E39C5F0057B776 /* Operators.swift in Sources */,
 				63A0378725E283C60057B776 /* CityWeatherVC.swift in Sources */,
 				63A0375625E165CA0057B776 /* ApiError.swift in Sources */,
 				63A0376625E228AA0057B776 /* ApiRespondable.swift in Sources */,

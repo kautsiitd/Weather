@@ -12,8 +12,8 @@ class CityWeatherVC: BaseViewController {
     @IBOutlet private var cityNameLabel: UILabel!
     @IBOutlet private var weatherNameLabel: UILabel!
     @IBOutlet private var temperatureLabel: UILabel!
-    @IBOutlet private var latitudeLabel: UILabel!
-    @IBOutlet private var longitudeLabel: UILabel!
+    @IBOutlet private var lowestTempLabel: UILabel!
+    @IBOutlet private var highestTempLabel: UILabel!
     @IBOutlet private var collectionView: UICollectionView!
     //MARK:- Properties
     private lazy var locationManager: CLLocationManager = {
@@ -82,9 +82,9 @@ extension CityWeatherVC: ApiRespondable {
         guard let cityWeather = api.cityWeather else { loader.stopAnimating(); return }
         cityNameLabel.text = cityWeather.name
         weatherNameLabel.text = cityWeather.weather.first?.main
-        temperatureLabel.text = "\(cityWeather.main.temp)°"
-        latitudeLabel.text = "H:\(cityWeather.coord.lat)"
-        longitudeLabel.text = "L:\(cityWeather.coord.lon)"
+        temperatureLabel.text = "\(cityWeather.main.temp.i)°"
+        lowestTempLabel.text = "L:\(cityWeather.main.tempMin.i)°"
+        highestTempLabel.text = "H:\(cityWeather.main.tempMax.i)°"
         collectionView.reloadData()
         loader.stopAnimating()
     }

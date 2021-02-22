@@ -10,7 +10,7 @@ class CurrentWeatherApi: BaseApiModal {
     //MARK:- Properties
     var query: String?
     var location: Coordinates?
-    private var units: MeasurementUnit = .standard
+    private var units: MeasurementUnit = .metric
     private var language: Language = .english
     var cityWeather: CurrentWeather?
     //MARK:- Fetchable

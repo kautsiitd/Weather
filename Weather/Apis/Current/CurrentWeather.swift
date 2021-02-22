@@ -5,16 +5,17 @@
 //  Created by Kautsya Kanu on 21/02/21.
 //
 
-import Foundation
+import UIKit
 struct CurrentWeather: Codable {
     let coord: Coordinates
     let weather: [Weather]
     let base: String
     let main: Main
-    let visibility: Int
+    let visibility: Double
     var wind: Wind
     let clouds: Cloud
-    let dt: Int
+    ///Time of data calculation, unix, UTC
+    let dt: Double
     let sys: Sys
     let timezone: Int
     let id: Int
@@ -23,15 +24,14 @@ struct CurrentWeather: Codable {
     
     //MARK:- Calculated Properties
     private(set) lazy var summaryDict: [Int: KeyValueString] = {
-        [0: (key: "SUNRISE",    value: "\(sys.sunrise)"),
-         1: (key: "SUNSET",     value: "\(sys.sunset)"),
-         2: (key: "TEMP MIN",   value: "\(main.tempMin)°"),
-         3: (key: "TEMP MAX",   value: "\(main.tempMax)°"),
-         4: (key: "HUMIDITY",   value: "\(main.humidity)%"),
-         5: (key: "WIND",       value: wind.readableFormat),
-         6: (key: "FEELS LIKE", value: "\(main.feelsLike)°"),
-         7: (key: "PRESSURE",   value: "\(main.pressure) hPa"),
-         8: (key: "VISIBILITY", value: "\(visibility) m")]
+        [0: (key: "SUNRISE",        value: sys.sunrise.localTime),
+         1: (key: "SUNSET",         value: sys.sunset.localTime),
+         2: (key: "HUMIDITY",       value: "\(main.humidity)%"),
+         3: (key: "WIND",           value: wind.readableFormat),
+         4: (key: "FEELS LIKE",     value: "\(main.feelsLike.rounded().i)°"),
+         5: (key: "PRESSURE",       value: "\(main.pressure) hPa"),
+         6: (key: "VISIBILITY",     value: "\(visibility/1000.0) km"),
+         7: (key: "LAST UPDATED",   value: dt.localTime)]
     }()
 }
 
@@ -39,7 +39,7 @@ struct CurrentWeather: Codable {
 extension CurrentWeather {
     struct Main: Codable {
         let temp: Double
-        let feelsLike: Double
+        let feelsLike: CGFloat
         let tempMin: Double
         let tempMax: Double
         let pressure: Int
@@ -53,7 +53,7 @@ extension CurrentWeather {
         let type: Int
         let id: Int
         let country: String
-        let sunrise: Int
-        let sunset: Int
+        let sunrise: Double
+        let sunset: Double
     }
 }

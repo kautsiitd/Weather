@@ -57,42 +57,42 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Globe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kk0-Av-cD0">
-                                <rect key="frame" x="169.5" y="84" width="75.5" height="33.5"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
+                                <rect key="frame" x="167" y="84" width="80" height="28"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="28"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xPe-cY-NzQ">
-                                <rect key="frame" x="170" y="125.5" width="74" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <rect key="frame" x="175.5" y="120" width="63" height="15"/>
+                                <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lqo-sp-ghI">
-                                <rect key="frame" x="187" y="154.5" width="64" height="57.5"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="48"/>
+                                <rect key="frame" x="184.5" y="145" width="45" height="44"/>
+                                <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="44"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="DTe-KB-mEW">
-                                <rect key="frame" x="158" y="221" width="98" height="24"/>
+                                <rect key="frame" x="169" y="194" width="76" height="15"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="H:--°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AV0-Lu-JKJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="45.5" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L:--°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AV0-Lu-JKJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="32" height="15"/>
+                                        <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L:--°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f6s-pM-DZW">
-                                        <rect key="frame" x="55.5" y="0.0" width="42.5" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="H:--°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f6s-pM-DZW">
+                                        <rect key="frame" x="42" y="0.0" width="34" height="15"/>
+                                        <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YBE-7T-n1e">
-                                <rect key="frame" x="0.0" y="285" width="414" height="528"/>
+                                <rect key="frame" x="0.0" y="249" width="414" height="564"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="kEG-pi-EjZ">
                                     <size key="itemSize" width="128" height="128"/>
@@ -161,13 +161,13 @@
                             <constraint firstItem="men-ZU-1qe" firstAttribute="bottom" secondItem="YBE-7T-n1e" secondAttribute="bottom" id="CJf-oD-QFa"/>
                             <constraint firstAttribute="trailing" secondItem="jQ5-AH-ywG" secondAttribute="trailing" id="Dgk-mM-vYw"/>
                             <constraint firstItem="xPe-cY-NzQ" firstAttribute="top" secondItem="Kk0-Av-cD0" secondAttribute="bottom" constant="8" symbolic="YES" id="Mb9-Rf-JPh"/>
-                            <constraint firstItem="lqo-sp-ghI" firstAttribute="centerX" secondItem="men-ZU-1qe" secondAttribute="centerX" constant="12" id="P71-S8-5ev"/>
+                            <constraint firstItem="lqo-sp-ghI" firstAttribute="centerX" secondItem="men-ZU-1qe" secondAttribute="centerX" id="P71-S8-5ev"/>
                             <constraint firstItem="YBE-7T-n1e" firstAttribute="top" secondItem="DTe-KB-mEW" secondAttribute="bottom" constant="40" id="PPF-rU-Fq8"/>
                             <constraint firstItem="DTe-KB-mEW" firstAttribute="centerX" secondItem="men-ZU-1qe" secondAttribute="centerX" id="V8g-kp-pzd"/>
                             <constraint firstItem="Kk0-Av-cD0" firstAttribute="top" secondItem="men-ZU-1qe" secondAttribute="top" constant="40" id="VBK-L6-P38"/>
-                            <constraint firstItem="DTe-KB-mEW" firstAttribute="top" secondItem="lqo-sp-ghI" secondAttribute="bottom" constant="9" id="cmC-xc-nXq"/>
+                            <constraint firstItem="DTe-KB-mEW" firstAttribute="top" secondItem="lqo-sp-ghI" secondAttribute="bottom" constant="5" id="cmC-xc-nXq"/>
                             <constraint firstItem="xPe-cY-NzQ" firstAttribute="centerX" secondItem="men-ZU-1qe" secondAttribute="centerX" id="dR6-cL-tZd"/>
-                            <constraint firstItem="lqo-sp-ghI" firstAttribute="top" secondItem="xPe-cY-NzQ" secondAttribute="bottom" constant="5" id="jhD-qk-wWs"/>
+                            <constraint firstItem="lqo-sp-ghI" firstAttribute="top" secondItem="xPe-cY-NzQ" secondAttribute="bottom" constant="10" id="jhD-qk-wWs"/>
                             <constraint firstItem="YBE-7T-n1e" firstAttribute="leading" secondItem="men-ZU-1qe" secondAttribute="leading" id="nXa-0l-njh"/>
                             <constraint firstAttribute="bottom" secondItem="jQ5-AH-ywG" secondAttribute="bottom" id="oNc-pL-gw3"/>
                             <constraint firstItem="men-ZU-1qe" firstAttribute="trailing" secondItem="YBE-7T-n1e" secondAttribute="trailing" id="sOH-pa-AfD"/>
@@ -179,8 +179,8 @@
                     <connections>
                         <outlet property="cityNameLabel" destination="Kk0-Av-cD0" id="2C0-Lc-R3A"/>
                         <outlet property="collectionView" destination="YBE-7T-n1e" id="uNj-ea-FiK"/>
-                        <outlet property="latitudeLabel" destination="f6s-pM-DZW" id="dfI-iE-ce1"/>
-                        <outlet property="longitudeLabel" destination="AV0-Lu-JKJ" id="XNy-id-Gem"/>
+                        <outlet property="highestTempLabel" destination="f6s-pM-DZW" id="1bE-2O-LZI"/>
+                        <outlet property="lowestTempLabel" destination="AV0-Lu-JKJ" id="VUc-1N-Kmr"/>
                         <outlet property="temperatureLabel" destination="lqo-sp-ghI" id="h76-re-JHw"/>
                         <outlet property="weatherNameLabel" destination="xPe-cY-NzQ" id="9Eu-RS-mWF"/>
                     </connections>
