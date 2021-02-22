@@ -19,6 +19,7 @@ class BaseViewController: UIViewController {
 extension BaseViewController {
     private func setupLoader() {
         loader.hidesWhenStopped = true
+        view.addSubview(loader)
         loader.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             loader.centerXAnchor.constraint(equalTo: view.centerXAnchor),
