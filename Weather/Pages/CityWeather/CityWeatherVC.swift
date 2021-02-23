@@ -9,6 +9,7 @@ import UIKit
 import CoreLocation
 class CityWeatherVC: BaseViewController {
     //MARK:- Elements
+    @IBOutlet private var likeButton: UIButton!
     @IBOutlet private var cityNameLabel: UILabel!
     @IBOutlet private var weatherNameLabel: UILabel!
     @IBOutlet private var temperatureLabel: UILabel!
@@ -43,9 +44,17 @@ class CityWeatherVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupCollectionView()
+        setupView()
         loader.startAnimating()
         locationManager.startUpdatingLocation()
+    }
+}
+
+//MARK:- IBActions
+extension CityWeatherVC {
+    @IBAction private func toggleLike() {
+        likeButton.isSelected = !likeButton.isSelected
+        likeButton.tintColor = likeButton.isSelected ? .red : .white
     }
 }
 
@@ -104,6 +113,14 @@ extension CityWeatherVC: ApiRespondable {
 
 //MARK:- Helpers
 extension CityWeatherVC {
+    private func setupView() {
+        setupLikeButton()
+        setupCollectionView()
+    }
+    private func setupLikeButton() {
+        likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        likeButton.setImage(UIImage(systemName: "heart.fill"), for: .selected)
+    }
     private func setupCollectionView() {
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 18, bottom: 18, right: 18)
     }
