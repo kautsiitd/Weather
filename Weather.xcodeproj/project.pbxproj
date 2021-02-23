@@ -48,6 +48,7 @@
 		63A037DE25E415D40057B776 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A037DD25E415D40057B776 /* CoreDataManager.swift */; };
 		63A037E325E416AF0057B776 /* Weather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 63A037E125E416AF0057B776 /* Weather.xcdatamodeld */; };
 		63A037E825E4A26E0057B776 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A037E725E4A26E0057B776 /* SearchCell.swift */; };
+		63A037F425E4B4EA0057B776 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A037F325E4B4EA0057B776 /* UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +95,7 @@
 		63A037DD25E415D40057B776 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		63A037E225E416AF0057B776 /* Weather.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Weather.xcdatamodel; sourceTree = "<group>"; };
 		63A037E725E4A26E0057B776 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		63A037F325E4B4EA0057B776 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 				63A037BB25E36E190057B776 /* Int.swift */,
 				63A037C825E39C5F0057B776 /* Operators.swift */,
 				63A037CB25E3ABB30057B776 /* Double.swift */,
+				63A037F325E4B4EA0057B776 /* UIView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				63A0377E25E22FCF0057B776 /* Language.swift in Sources */,
 				63A037D225E3C3CC0057B776 /* SearchApi.swift in Sources */,
 				63A0379325E2E70C0057B776 /* City.swift in Sources */,
+				63A037F425E4B4EA0057B776 /* UIView.swift in Sources */,
 				63A0378A25E2E5C50057B776 /* DailyForecastApi.swift in Sources */,
 				63A037A625E31A8F0057B776 /* SearchPageVC.swift in Sources */,
 				63A0376B25E229F80057B776 /* Timezone.swift in Sources */,

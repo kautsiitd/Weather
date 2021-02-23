@@ -45,6 +45,7 @@ class CityWeatherVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        likeButton.isEnabled = false
         loader.startAnimating()
         locationManager.startUpdatingLocation()
     }
@@ -53,6 +54,7 @@ class CityWeatherVC: BaseViewController {
 //MARK:- IBActions
 extension CityWeatherVC {
     @IBAction private func toggleLike() {
+        likeButton.animatePop()
         likeButton.isSelected = !likeButton.isSelected
         likeButton.tintColor = likeButton.isSelected ? .red : .white
     }
@@ -104,9 +106,12 @@ extension CityWeatherVC: ApiRespondable {
         lowestTempLabel.text = "L: \(cityWeather.main.tempMin.i)°"
         highestTempLabel.text = "H: \(cityWeather.main.tempMax.i)°"
         collectionView.reloadData()
+        likeButton.isEnabled = true
         loader.stopAnimating()
     }
     func didFail(with error: BaseError, for params: [String : AnyHashable]) {
+        NSLog(error.localizedDescription)
+        likeButton.isEnabled = true
         loader.stopAnimating()
     }
 }
