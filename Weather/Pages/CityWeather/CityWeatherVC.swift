@@ -16,6 +16,7 @@ class CityWeatherVC: BaseViewController {
     @IBOutlet private var temperatureLabel: UILabel!
     @IBOutlet private var lowestTempLabel: UILabel!
     @IBOutlet private var highestTempLabel: UILabel!
+    @IBOutlet private var aqiView: UIView!
     @IBOutlet private var forecastCV: UICollectionView!
     @IBOutlet private var currentInfoCV: UICollectionView!
     //MARK:- Properties
@@ -68,6 +69,11 @@ class CityWeatherVC: BaseViewController {
         likeButton.isEnabled = false
         loader.startAnimating()
         locationManager.startUpdatingLocation()
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        aqiView.addGradiant(of: [.green, .yellow, .orange, .red, .brown],
+                            from: .pos(.mid, .left), to: .pos(.mid, .right))
     }
 }
 
@@ -166,11 +172,15 @@ extension CityWeatherVC {
         loader.color = .white
         errorLabel.textColor = .white
         setupLikeButton()
+        setupAqiView()
         setupCollectionView()
     }
     private func setupLikeButton() {
         likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
         likeButton.setImage(UIImage(systemName: "heart.fill"), for: .selected)
+    }
+    private func setupAqiView() {
+        aqiView.layer.cornerRadius = aqiView.bounds.height/2
     }
     private func setupCollectionView() {
         currentInfoCV.contentInset = UIEdgeInsets(top: 0, left: 18, bottom: 18, right: 18)

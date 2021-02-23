@@ -19,7 +19,7 @@ class BaseApiModal: NSObject, Fetchable {
     func makeGetRequest() {
         status = .inProgress
         let updatedParams = update(params)
-        latestParams = updatedParams
+        latestParams = params
         do { try ApiManager.shared.getRequest(self) }
         catch let error { delegate?.didFail(with: ApiError.custom(error), for: updatedParams) }
     }
@@ -29,10 +29,12 @@ class BaseApiModal: NSObject, Fetchable {
     }
     func parse(_ data: Data, for params: [String : AnyHashable]) throws {}
     func didFetchSuccessfully(for params: [String : AnyHashable]) {
-        delegate?.didFetchSuccessfully(for: params)
+        let updatedParams = update(params)
+        delegate?.didFetchSuccessfully(for: updatedParams)
     }
     func didFail(with error: BaseError, for params: [String : AnyHashable]) {
-        delegate?.didFail(with: error, for: params)
+        let updatedParams = update(params)
+        delegate?.didFail(with: error, for: updatedParams)
     }
 }
 
