@@ -95,20 +95,35 @@ extension CityWeatherVC {
 //MARK:- CollectionView
 extension CityWeatherVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        currentApi.cityWeather?.summaryDict.count ?? 0
+        if collectionView == forecastCV { return forecastApi.forecast?.list.count ?? 0 }
+        else if collectionView == currentInfoCV { return currentApi.cityWeather?.summaryDict.count ?? 0 }
+        return 0
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let summaryCell = currentInfoCV.dequeueReusableCell(withReuseIdentifier: WeatherSummaryCell.cellIdentifier, for: indexPath) as! WeatherSummaryCell
-        summaryCell.data = currentApi.cityWeather?.summaryDict[indexPath.row]
-        return summaryCell
+        if collectionView == forecastCV {
+            let forecastCell = forecastCV.dequeueReusableCell(withReuseIdentifier: CityForecastCell.cellIdentifier, for: indexPath) as! CityForecastCell
+            forecastCell.data = forecastApi.forecast?.list[indexPath.row]
+            return forecastCell
+        } else if collectionView == currentInfoCV {
+            let summaryCell = currentInfoCV.dequeueReusableCell(withReuseIdentifier: WeatherSummaryCell.cellIdentifier, for: indexPath) as! WeatherSummaryCell
+            summaryCell.data = currentApi.cityWeather?.summaryDict[indexPath.row]
+            return summaryCell
+        }
+        return UICollectionViewCell()
     }
 }
 
 extension CityWeatherVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let insets = currentInfoCV.contentInset.left + currentInfoCV.contentInset.right
-        let totalWidth = currentInfoCV.frame.width - insets
-        return CGSize(width: totalWidth/2, height: 50)
+        if collectionView == forecastCV {
+            let cellHeight = 10+21+20+25+20+24+10
+            return CGSize(width: 60, height: cellHeight)
+        } else if collectionView == currentInfoCV {
+            let insets = currentInfoCV.contentInset.left + currentInfoCV.contentInset.right
+            let totalWidth = currentInfoCV.frame.width - insets
+            return CGSize(width: totalWidth/2, height: 50)
+        }
+        return .zero
     }
 }
 
@@ -183,6 +198,7 @@ extension CityWeatherVC {
         aqiView.layer.cornerRadius = aqiView.bounds.height/2
     }
     private func setupCollectionView() {
+        forecastCV.contentInset = UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 18)
         currentInfoCV.contentInset = UIEdgeInsets(top: 0, left: 18, bottom: 18, right: 18)
     }
     private func refreshView() {
