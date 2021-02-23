@@ -26,5 +26,16 @@ class CityForecastCell: UICollectionViewCell {
 //MARK:- Helpers
 extension CityForecastCell {
     private func refreshView() {
+        if let data = data {
+            let date = data.dtTxt.date
+            timeLabel.text = date?.string(in: "h a")
+            iconImageView.image = date?.symbol
+            iconImageView.tintColor = date?.symbolColor
+            tempLabel.text = "\(data.main.temp.rounded().i)°"
+        } else {
+            timeLabel.text = ""
+            iconImageView.image = nil
+            tempLabel.text = ""
+        }
     }
 }
