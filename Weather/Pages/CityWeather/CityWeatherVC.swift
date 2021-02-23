@@ -47,6 +47,7 @@ class CityWeatherVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        registerForNotifications()
         likeButton.isEnabled = false
         loader.startAnimating()
         locationManager.startUpdatingLocation()
@@ -115,6 +116,20 @@ extension CityWeatherVC: ApiRespondable {
         likeButton.isEnabled = false
         loader.stopAnimating()
         showError(true, with: error.localizedDescription)
+    }
+}
+
+//MARK:- Notifications
+extension CityWeatherVC {
+    private func registerForNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(libraryUpdated), name: Notifications.libraryUpdated.name, object: nil)
+    }
+    @objc private func libraryUpdated(notification: NSNotification) {
+        guard let userInfo = notification.userInfo,
+              let cityName = userInfo["cityName"] as? String, let status = userInfo["status"] as? String
+        else { return }
+        if cityName != api.cityWeather?.name { return }
+        likeButton.isSelected = status == "added"
     }
 }
 

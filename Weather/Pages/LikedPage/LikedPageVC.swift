@@ -17,11 +17,11 @@ class LikedPageVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        registerForNotifications()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchCities()
-        tableView.reloadData()
+        refreshView()
         fetchedRC.fetchedObjects?.isEmpty ?? true ? showError(true, with: "No Data") : showError(false)
     }
 }
@@ -47,6 +47,19 @@ extension LikedPageVC: UITableViewDelegate {
     }
 }
 
+//MARK:- Notifications
+extension LikedPageVC {
+    private func registerForNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(libraryUpdated), name: Notifications.libraryUpdated.name, object: nil)
+    }
+    @objc private func libraryUpdated(notification: NSNotification) {
+        guard let userInfo = notification.userInfo,
+              let _ = userInfo["cityName"] as? String, let _ = userInfo["status"] as? String
+        else { return }
+        refreshView()
+    }
+}
+
 //MARK:- Helpers
 extension LikedPageVC {
     private func setupView() {
@@ -63,5 +76,9 @@ extension LikedPageVC {
                                                sectionNameKeyPath: nil, cacheName: nil)
         do { try fetchedRC.performFetch() }
         catch let error { NSLog(error.localizedDescription) }
+    }
+    private func refreshView() {
+        fetchCities()
+        tableView.reloadData()
     }
 }

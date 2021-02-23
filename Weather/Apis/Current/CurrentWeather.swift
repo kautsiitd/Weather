@@ -44,12 +44,17 @@ extension CurrentWeather {
         cityWeather.name = name
         cityWeather.temp = main.temp
         try context.save()
+        NotificationCenter.default.post(name: Notifications.libraryUpdated.name, object: nil,
+                                        userInfo: ["cityName": name, "status": "added"])
     }
     func delete(from context: NSManagedObjectContext) throws {
         let request = CityWeather.fetchRequest(for: name)
         guard let cities = try? context.fetch(request), let city = cities.first else { return }
+        let cityName = city.name
         context.delete(city)
         try context.save()
+        NotificationCenter.default.post(name: Notifications.libraryUpdated.name, object: nil,
+                                        userInfo: ["cityName": cityName, "status": "deleted"])
     }
     func isPresent(in context: NSManagedObjectContext) -> Bool {
         let request = CityWeather.fetchRequest(for: name)

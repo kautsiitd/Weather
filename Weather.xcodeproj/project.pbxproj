@@ -51,6 +51,7 @@
 		63A037F425E4B4EA0057B776 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A037F325E4B4EA0057B776 /* UIView.swift */; };
 		63A037F725E4B9720057B776 /* CityWeather+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A037F625E4B9720057B776 /* CityWeather+CoreDataClass.swift */; };
 		63A037FA25E4BD160057B776 /* LikedCityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A037F925E4BD160057B776 /* LikedCityCell.swift */; };
+		63A0380525E4ED780057B776 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A0380425E4ED780057B776 /* Notifications.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +101,7 @@
 		63A037F325E4B4EA0057B776 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		63A037F625E4B9720057B776 /* CityWeather+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CityWeather+CoreDataClass.swift"; sourceTree = "<group>"; };
 		63A037F925E4BD160057B776 /* LikedCityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedCityCell.swift; sourceTree = "<group>"; };
+		63A0380425E4ED780057B776 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				63A037C225E3750C0057B776 /* TypeAlias.swift */,
+				63A0380425E4ED780057B776 /* Notifications.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 			files = (
 				63A037FA25E4BD160057B776 /* LikedCityCell.swift in Sources */,
 				63A0377A25E22F670057B776 /* MeasurementUnit.swift in Sources */,
+				63A0380525E4ED780057B776 /* Notifications.swift in Sources */,
 				63A037C325E3750C0057B776 /* TypeAlias.swift in Sources */,
 				63A0374E25E164E10057B776 /* ApiManager.swift in Sources */,
 				63A037BF25E373200057B776 /* WeatherSummaryCell.swift in Sources */,
