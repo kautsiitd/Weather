@@ -11,15 +11,17 @@ class BaseApiModal: NSObject, Fetchable {
     private var latestParams: [String: AnyHashable] = [:]
     
     //MARK:- Fetchable
+    var id: String { "\(Self.self)" }
     var status: ApiStatus = .unknown
     var apiEndPoint: String { "" }
     var params: [String: AnyHashable] { [:] }
     
     func makeGetRequest() {
         status = .inProgress
-        latestParams = params
+        let updatedParams = update(params)
+        latestParams = updatedParams
         do { try ApiManager.shared.getRequest(self) }
-        catch let error { delegate?.didFail(with: ApiError.custom(error), for: params) }
+        catch let error { delegate?.didFail(with: ApiError.custom(error), for: updatedParams) }
     }
     
     func shouldParse(for params: [String : AnyHashable]) -> Bool {
@@ -34,7 +36,15 @@ class BaseApiModal: NSObject, Fetchable {
     }
 }
 
-//MARK:- Helpers
 enum ApiStatus {
     case inProgress, success, error(with: BaseError), contentOver, unknown
+}
+
+//MARK:- Helpers
+extension BaseApiModal {
+    private func update(_ params: [String: AnyHashable]) -> [String: AnyHashable] {
+        var updatedParams = params
+        updatedParams["ApiType"] = id
+        return updatedParams
+    }
 }
