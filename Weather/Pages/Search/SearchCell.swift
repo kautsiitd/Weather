@@ -6,7 +6,7 @@
 //
 
 import UIKit
-class SearchCell: UITableViewCell {
+final class SearchCell: UITableViewCell {
     //MARK:- Elements
     @IBOutlet private var titleLabel: UILabel!
     //MARK:- Properties

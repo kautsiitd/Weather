@@ -18,7 +18,7 @@ struct Wind: Codable {
     /// - **Unit Default**: meter/sec
     /// - **Metric**: meter/sec
     /// - **Imperial**: miles/hour.
-    let gust: Int?
+    let gust: Float?
     
     //MARK:- Calculated Properties
     private(set) lazy var readableFormat: String = {

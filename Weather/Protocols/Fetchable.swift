@@ -7,6 +7,7 @@
 
 import Foundation
 protocol Fetchable: ApiRespondable {
+    var id: String { get }
     var status: ApiStatus { get }
     var apiEndPoint: String { get }
     var params: [String: AnyHashable] { get }

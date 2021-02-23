@@ -6,7 +6,7 @@
 //
 
 import UIKit
-class WeatherSummaryCell: UICollectionViewCell {
+final class WeatherSummaryCell: UICollectionViewCell {
     //MARK:- Elements
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var valueLabel: UILabel!
