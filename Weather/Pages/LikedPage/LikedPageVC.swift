@@ -22,7 +22,6 @@ class LikedPageVC: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         refreshView()
-        fetchedRC.fetchedObjects?.isEmpty ?? true ? showError(true, with: "No Data") : showError(false)
     }
 }
 
@@ -80,5 +79,6 @@ extension LikedPageVC {
     private func refreshView() {
         fetchCities()
         tableView.reloadData()
+        fetchedRC.fetchedObjects?.isEmpty ?? true ? showError(true, with: "No Data") : showError(false)
     }
 }

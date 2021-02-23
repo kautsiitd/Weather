@@ -78,8 +78,8 @@ extension CurrentWeather {
         
     }
     struct Sys: Codable {
-        let type: Int
-        let id: Int
+        let type: Int?
+        let id: Int?
         let country: String
         let sunrise: Double
         let sunset: Double
