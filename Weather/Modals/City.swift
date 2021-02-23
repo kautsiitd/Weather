@@ -12,11 +12,12 @@ struct City: Codable {
     ///City name
     let name: String
     let coord: Coordinates
+    let state: String?
     ///Country code (GB, JP etc.)
     let country: String
-    let population: Int
+    let population: Int?
     ///Shift in seconds from UTC
-    let timezone: Double
+    let timezone: Double?
     let sunrise: Double?
     let sunset: Double?
 }

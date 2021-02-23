@@ -61,6 +61,8 @@
 		63A0382925E579F90057B776 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A0382825E579F90057B776 /* Double.swift */; };
 		63A0382C25E593FE0057B776 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A0382B25E593FE0057B776 /* String.swift */; };
 		63A0382F25E594AD0057B776 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A0382E25E594AD0057B776 /* Date.swift */; };
+		63A0383625E5C46C0057B776 /* CoreLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A0383525E5C46C0057B776 /* CoreLoadable.swift */; };
+		63A0383925E5C5890057B776 /* FileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A0383825E5C5890057B776 /* FileError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,6 +122,8 @@
 		63A0382825E579F90057B776 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		63A0382B25E593FE0057B776 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		63A0382E25E594AD0057B776 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		63A0383525E5C46C0057B776 /* CoreLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreLoadable.swift; sourceTree = "<group>"; };
+		63A0383825E5C5890057B776 /* FileError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +182,7 @@
 				63A0375125E165720057B776 /* BaseApiModal.swift */,
 				63A0375525E165CA0057B776 /* ApiError.swift */,
 				63A0375825E1660C0057B776 /* BaseError.swift */,
+				63A0383825E5C5890057B776 /* FileError.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -201,6 +206,7 @@
 			children = (
 				63A0376225E228780057B776 /* Fetchable.swift */,
 				63A0376525E228AA0057B776 /* ApiRespondable.swift */,
+				63A0383525E5C46C0057B776 /* CoreLoadable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -411,6 +417,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63A037FA25E4BD160057B776 /* LikedCityCell.swift in Sources */,
+				63A0383625E5C46C0057B776 /* CoreLoadable.swift in Sources */,
 				63A0377A25E22F670057B776 /* MeasurementUnit.swift in Sources */,
 				63A0380525E4ED780057B776 /* Notifications.swift in Sources */,
 				63A037C325E3750C0057B776 /* TypeAlias.swift in Sources */,
@@ -449,6 +456,7 @@
 				63A0382925E579F90057B776 /* Double.swift in Sources */,
 				63A0378F25E2E6E80057B776 /* ForecastWeather.swift in Sources */,
 				63A037A925E31ABB0057B776 /* LikedPageVC.swift in Sources */,
+				63A0383925E5C5890057B776 /* FileError.swift in Sources */,
 				63A0382125E554BE0057B776 /* CityPollution.swift in Sources */,
 				63A0377E25E22FCF0057B776 /* Language.swift in Sources */,
 				63A037D225E3C3CC0057B776 /* SearchApi.swift in Sources */,

@@ -12,26 +12,49 @@ final class SearchPageVC: BaseViewController {
     @IBOutlet private var searchBar: UISearchBar!
     @IBOutlet private var tableView: UITableView!
     //MARK:- Properties
-    private let data: [String] = ["Delhi", "Mumbai", "London", "Bangalore"]
+    private lazy var searchApi: SearchApi = {
+        let searchApi = SearchApi()
+        searchApi.delegate = self
+        return searchApi
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        loader.startAnimating()
+        searchApi.loadData()
+    }
+}
+
+//MARK:- ApiRespondable
+extension SearchPageVC: ApiRespondable {
+    func didFetchSuccessfully(for params: [String : AnyHashable]) {
+        loader.stopAnimating()
+        tableView.reloadData()
+    }
+    func didFail(with error: BaseError, for params: [String : AnyHashable]) {
+        loader.stopAnimating()
+        showError(true, with: "No Data")
+    }
 }
 
 //MARK:- UITableView
 extension SearchPageVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return searchApi.cities?.count ?? 0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchCell.identifier) as! SearchCell
-        cell.title = data[indexPath.row]
+        cell.title = searchApi.cities?[indexPath.row].name
         return cell
     }
 }
 
 extension SearchPageVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let city = searchApi.cities?[indexPath.row] else { return }
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let cityWeatherVC = storyboard.instantiateViewController(withIdentifier: "CityWeatherVC") as! CityWeatherVC
-        cityWeatherVC.query = data[indexPath.row]
+        cityWeatherVC.query = city.name
         present(cityWeatherVC, animated: true)
     }
 }
