@@ -83,8 +83,8 @@ extension CityWeatherVC: ApiRespondable {
         cityNameLabel.text = cityWeather.name
         weatherNameLabel.text = cityWeather.weather.first?.main
         temperatureLabel.text = "\(cityWeather.main.temp.i)°"
-        lowestTempLabel.text = "L:\(cityWeather.main.tempMin.i)°"
-        highestTempLabel.text = "H:\(cityWeather.main.tempMax.i)°"
+        lowestTempLabel.text = "L: \(cityWeather.main.tempMin.i)°"
+        highestTempLabel.text = "H: \(cityWeather.main.tempMax.i)°"
         collectionView.reloadData()
         loader.stopAnimating()
     }
