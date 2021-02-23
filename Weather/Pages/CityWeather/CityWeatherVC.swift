@@ -17,8 +17,13 @@ final class CityWeatherVC: BaseViewController {
     @IBOutlet private var lowestTempLabel: UILabel!
     @IBOutlet private var highestTempLabel: UILabel!
     @IBOutlet private var aqiView: UIView!
+    @IBOutlet private var aqiSlider: UIView!
+    @IBOutlet private var aqiMarkView: UIView!
+    @IBOutlet private var aqiLabel: UILabel!
     @IBOutlet private var forecastCV: UICollectionView!
     @IBOutlet private var currentInfoCV: UICollectionView!
+    //MARK:- Constraints
+    @IBOutlet private var aqiMarkPos: NSLayoutConstraint!
     //MARK:- Properties
     private let context = CoreDataManager.shared.container.viewContext
     private lazy var locationManager: CLLocationManager = {
@@ -59,6 +64,7 @@ final class CityWeatherVC: BaseViewController {
         forecastApi.location = coords
         forecastApi.makeGetRequest()
         pollutionApi.location = coords
+        pollutionApi.makeGetRequest()
         locationManager.stopUpdatingLocation()
     }}
     
@@ -66,13 +72,12 @@ final class CityWeatherVC: BaseViewController {
         super.viewDidLoad()
         setupView()
         registerForNotifications()
-        likeButton.isEnabled = false
         loader.startAnimating()
         locationManager.startUpdatingLocation()
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        aqiView.addGradiant(of: [.green, .yellow, .orange, .red, .brown],
+        aqiSlider.addGradiant(of: [.green, .yellow, .orange, .red, .brown],
                             from: .pos(.mid, .left), to: .pos(.mid, .right))
     }
 }
@@ -149,10 +154,15 @@ extension CityWeatherVC: ApiRespondable {
         switch params["ApiType"] as? String {
         case currentApi.id: refreshView()
         case forecastApi.id: forecastCV.reloadData()
-        case pollutionApi.id: return
+        case pollutionApi.id:
+            guard let pollution = pollutionApi.cityPollution?.list.first else { return }
+            aqiLabel.text = pollution.main.aqiName
+            aqiView.layoutIfNeeded()
+            aqiMarkPos.constant = aqiSlider.bounds.width * pollution.main.relativePos
+            UIView.animate(withDuration: 0.8) { self.aqiSlider.layoutIfNeeded() }
         default: return
         }
-        likeButton.isEnabled = true
+        likeButton.isHidden = false
         loader.stopAnimating()
     }
     func didFail(with error: BaseError, for params: [String : AnyHashable]) {
@@ -162,7 +172,7 @@ extension CityWeatherVC: ApiRespondable {
         case pollutionApi.id: NSLog("PollutionApi Failed: \(error.localizedDescription)"); return
         default: return
         }
-        likeButton.isEnabled = false
+        likeButton.isHidden = true
         loader.stopAnimating()
     }
 }
@@ -184,6 +194,7 @@ extension CityWeatherVC {
 //MARK:- Helpers
 extension CityWeatherVC {
     private func setupView() {
+        likeButton.isHidden = true
         loader.color = .white
         errorLabel.textColor = .white
         setupLikeButton()
@@ -195,7 +206,10 @@ extension CityWeatherVC {
         likeButton.setImage(UIImage(systemName: "heart.fill"), for: .selected)
     }
     private func setupAqiView() {
-        aqiView.layer.cornerRadius = aqiView.bounds.height/2
+        aqiSlider.layer.cornerRadius = aqiSlider.bounds.height/2
+        aqiMarkView.layer.borderWidth = 2
+        aqiMarkView.layer.borderColor = UIColor.black.cgColor
+        aqiMarkView.layer.cornerRadius = aqiMarkView.bounds.height/2
     }
     private func setupCollectionView() {
         forecastCV.contentInset = UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 18)
