@@ -46,14 +46,15 @@ extension CurrentWeather {
         try context.save()
     }
     func delete(from context: NSManagedObjectContext) throws {
-        NSLog("Delete is not Supported yet!!")
+        let request = CityWeather.fetchRequest(for: name)
+        guard let cities = try? context.fetch(request), let city = cities.first else { return }
+        context.delete(city)
+        try context.save()
     }
     func isPresent(in context: NSManagedObjectContext) -> Bool {
-        let request = CityWeather.fetchAllRequest()
-        let predicate = NSPredicate(format: "name == %@", name)
-        request.predicate = predicate
-        guard let todos = try? context.fetch(request) else { return false }
-        return !todos.isEmpty
+        let request = CityWeather.fetchRequest(for: name)
+        guard let cities = try? context.fetch(request) else { return false }
+        return !cities.isEmpty
     }
 }
 

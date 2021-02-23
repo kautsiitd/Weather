@@ -9,7 +9,7 @@ import UIKit
 class BaseViewController: UIViewController {
     //MARK:- Elements
     var loader: UIActivityIndicatorView = UIActivityIndicatorView()
-    private var errorLabel: UILabel = UILabel()
+    var errorLabel: UILabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -16,5 +16,12 @@ class CityWeather: NSManagedObject {
     @nonobjc class func fetchAllRequest() -> NSFetchRequest<CityWeather> {
         return NSFetchRequest<CityWeather>(entityName: "\(CityWeather.self)")
     }
+    @nonobjc class func fetchRequest(for name: String) -> NSFetchRequest<CityWeather> {
+        let request = NSFetchRequest<CityWeather>(entityName: "\(CityWeather.self)")
+        let predicate = NSPredicate(format: "name == %@", name)
+        request.predicate = predicate
+        request.fetchLimit = 1
+        return request
+    }
 }
 

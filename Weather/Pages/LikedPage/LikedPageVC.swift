@@ -16,11 +16,12 @@ class LikedPageVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTableView()
+        setupView()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchCities()
+        tableView.reloadData()
         fetchedRC.fetchedObjects?.isEmpty ?? true ? showError(true, with: "No Data") : showError(false)
     }
 }
@@ -48,6 +49,10 @@ extension LikedPageVC: UITableViewDelegate {
 
 //MARK:- Helpers
 extension LikedPageVC {
+    private func setupView() {
+        errorLabel.textColor = .white
+        setupTableView()
+    }
     private func setupTableView() {
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
