@@ -31,7 +31,7 @@ struct CurrentWeather: Codable {
          4: (key: "FEELS LIKE",     value: "\(main.feelsLike.rounded().i)°"),
          5: (key: "PRESSURE",       value: "\(main.pressure) hPa"),
          6: (key: "VISIBILITY",     value: "\(visibility/1000.0) km"),
-         7: (key: "LAST UPDATED",   value: dt.localTime)]
+         7: (key: "LOCAL TIME",     value: dt.localTime)]
     }()
 }
 

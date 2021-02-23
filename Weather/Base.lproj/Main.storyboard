@@ -258,24 +258,74 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xmi-DL-cdD">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="LikedCityCell" rowHeight="72" id="c5Z-3n-Diw" customClass="LikedCityCell" customModule="Weather" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="72"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c5Z-3n-Diw" id="IT9-qz-pz5">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="72"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SunnyCell" translatesAutoresizingMaskIntoConstraints="NO" id="pTp-UY-pvf">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="72"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delhi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEt-H8-ENq">
+                                                    <rect key="frame" x="24" y="18" width="74.5" height="36"/>
+                                                    <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="28"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OgR-rn-rwI">
+                                                    <rect key="frame" x="345.5" y="22" width="44.5" height="28"/>
+                                                    <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="28"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="OgR-rn-rwI" secondAttribute="trailing" constant="24" id="50r-pb-wBt"/>
+                                                <constraint firstItem="pTp-UY-pvf" firstAttribute="leading" secondItem="IT9-qz-pz5" secondAttribute="leading" id="5eD-wl-ENB"/>
+                                                <constraint firstItem="QEt-H8-ENq" firstAttribute="leading" secondItem="IT9-qz-pz5" secondAttribute="leading" constant="24" id="66X-Pi-ODp"/>
+                                                <constraint firstItem="OgR-rn-rwI" firstAttribute="centerY" secondItem="IT9-qz-pz5" secondAttribute="centerY" id="QQd-Sm-Qg6"/>
+                                                <constraint firstItem="pTp-UY-pvf" firstAttribute="top" secondItem="IT9-qz-pz5" secondAttribute="top" id="awV-G1-hzN"/>
+                                                <constraint firstItem="QEt-H8-ENq" firstAttribute="top" secondItem="IT9-qz-pz5" secondAttribute="top" constant="18" id="h68-Rx-p6f"/>
+                                                <constraint firstAttribute="bottom" secondItem="pTp-UY-pvf" secondAttribute="bottom" id="kXx-RR-ypr"/>
+                                                <constraint firstAttribute="trailing" secondItem="pTp-UY-pvf" secondAttribute="trailing" id="kfy-ns-gcW"/>
+                                                <constraint firstAttribute="bottom" secondItem="QEt-H8-ENq" secondAttribute="bottom" constant="18" id="vJG-8x-B7S"/>
+                                                <constraint firstItem="OgR-rn-rwI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QEt-H8-ENq" secondAttribute="trailing" constant="50" id="xgf-u7-kBm"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="tempLabel" destination="OgR-rn-rwI" id="0Rq-Ka-jZq"/>
+                                            <outlet property="titleLabel" destination="QEt-H8-ENq" id="VAq-O7-aYi"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="4rT-Z1-7lb" id="Ht0-Gu-vBX"/>
+                                    <outlet property="delegate" destination="4rT-Z1-7lb" id="gEl-Rk-TtZ"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VBz-qi-NKf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="xmi-DL-cdD" firstAttribute="top" secondItem="VBz-qi-NKf" secondAttribute="top" id="BPb-h8-SyQ"/>
+                            <constraint firstItem="xmi-DL-cdD" firstAttribute="top" secondItem="zdc-np-1vo" secondAttribute="top" id="BPb-h8-SyQ"/>
                             <constraint firstItem="VBz-qi-NKf" firstAttribute="bottom" secondItem="xmi-DL-cdD" secondAttribute="bottom" id="blf-6m-Mig"/>
                             <constraint firstItem="xmi-DL-cdD" firstAttribute="leading" secondItem="VBz-qi-NKf" secondAttribute="leading" id="sni-b4-tbU"/>
                             <constraint firstItem="VBz-qi-NKf" firstAttribute="trailing" secondItem="xmi-DL-cdD" secondAttribute="trailing" id="yvv-iT-xn4"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="suit.heart" catalog="system" id="mzt-x2-iyZ"/>
+                    <connections>
+                        <outlet property="tableView" destination="xmi-DL-cdD" id="TDw-BE-PQ6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EGx-kS-Msx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1059" y="1369"/>
+            <point key="canvasLocation" x="-1059.4202898550725" y="1368.75"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="DFc-hT-GUz">
@@ -299,6 +349,7 @@
     </scenes>
     <resources>
         <image name="Clear" width="414" height="736"/>
+        <image name="SunnyCell" width="640" height="112"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
