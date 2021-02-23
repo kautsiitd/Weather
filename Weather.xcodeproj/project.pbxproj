@@ -41,7 +41,6 @@
 		63A037BF25E373200057B776 /* WeatherSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A037BE25E373200057B776 /* WeatherSummaryCell.swift */; };
 		63A037C325E3750C0057B776 /* TypeAlias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A037C225E3750C0057B776 /* TypeAlias.swift */; };
 		63A037C925E39C5F0057B776 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A037C825E39C5F0057B776 /* Operators.swift */; };
-		63A037CC25E3ABB30057B776 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A037CB25E3ABB30057B776 /* Double.swift */; };
 		63A037D225E3C3CC0057B776 /* SearchApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A037D125E3C3CC0057B776 /* SearchApi.swift */; };
 		63A037D725E414A50057B776 /* CityCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A037D625E414A50057B776 /* CityCore.swift */; };
 		63A037DB25E415790057B776 /* CoordinateCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A037DA25E415790057B776 /* CoordinateCore.swift */; };
@@ -59,6 +58,9 @@
 		63A0381D25E554A70057B776 /* PollutionApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A0381C25E554A70057B776 /* PollutionApi.swift */; };
 		63A0382125E554BE0057B776 /* CityPollution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A0382025E554BE0057B776 /* CityPollution.swift */; };
 		63A0382525E5560D0057B776 /* Pollution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A0382425E5560D0057B776 /* Pollution.swift */; };
+		63A0382925E579F90057B776 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A0382825E579F90057B776 /* Double.swift */; };
+		63A0382C25E593FE0057B776 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A0382B25E593FE0057B776 /* String.swift */; };
+		63A0382F25E594AD0057B776 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A0382E25E594AD0057B776 /* Date.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,7 +100,6 @@
 		63A037BE25E373200057B776 /* WeatherSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherSummaryCell.swift; sourceTree = "<group>"; };
 		63A037C225E3750C0057B776 /* TypeAlias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAlias.swift; sourceTree = "<group>"; };
 		63A037C825E39C5F0057B776 /* Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
-		63A037CB25E3ABB30057B776 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		63A037D125E3C3CC0057B776 /* SearchApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchApi.swift; sourceTree = "<group>"; };
 		63A037D625E414A50057B776 /* CityCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCore.swift; sourceTree = "<group>"; };
 		63A037DA25E415790057B776 /* CoordinateCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateCore.swift; sourceTree = "<group>"; };
@@ -116,6 +117,9 @@
 		63A0381C25E554A70057B776 /* PollutionApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollutionApi.swift; sourceTree = "<group>"; };
 		63A0382025E554BE0057B776 /* CityPollution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityPollution.swift; sourceTree = "<group>"; };
 		63A0382425E5560D0057B776 /* Pollution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pollution.swift; sourceTree = "<group>"; };
+		63A0382825E579F90057B776 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		63A0382B25E593FE0057B776 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		63A0382E25E594AD0057B776 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,8 +188,10 @@
 				63A0375C25E166CC0057B776 /* URL.swift */,
 				63A037BB25E36E190057B776 /* Int.swift */,
 				63A037C825E39C5F0057B776 /* Operators.swift */,
-				63A037CB25E3ABB30057B776 /* Double.swift */,
 				63A037F325E4B4EA0057B776 /* UIView.swift */,
+				63A0382825E579F90057B776 /* Double.swift */,
+				63A0382B25E593FE0057B776 /* String.swift */,
+				63A0382E25E594AD0057B776 /* Date.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -415,7 +421,6 @@
 				63A0375225E165720057B776 /* BaseApiModal.swift in Sources */,
 				63A037BC25E36E190057B776 /* Int.swift in Sources */,
 				63A0378425E27F750057B776 /* Weather.swift in Sources */,
-				63A037CC25E3ABB30057B776 /* Double.swift in Sources */,
 				63A037E825E4A26E0057B776 /* SearchCell.swift in Sources */,
 				63A037DB25E415790057B776 /* CoordinateCore.swift in Sources */,
 				63A0381025E5364D0057B776 /* Main.swift in Sources */,
@@ -423,6 +428,7 @@
 				63A0382525E5560D0057B776 /* Pollution.swift in Sources */,
 				63A037B025E320300057B776 /* BaseViewController.swift in Sources */,
 				63A037F725E4B9720057B776 /* CityWeather+CoreDataClass.swift in Sources */,
+				63A0382C25E593FE0057B776 /* String.swift in Sources */,
 				63A0376F25E22BCE0057B776 /* Coordinates.swift in Sources */,
 				635806B725E1552200BAE8AF /* AppDelegate.swift in Sources */,
 				635806B925E1552200BAE8AF /* SceneDelegate.swift in Sources */,
@@ -435,10 +441,12 @@
 				63A0376325E228780057B776 /* Fetchable.swift in Sources */,
 				63A0378125E27F370057B776 /* CurrentWeather.swift in Sources */,
 				63A0379D25E2F1E30057B776 /* ServerSideError.swift in Sources */,
+				63A0382F25E594AD0057B776 /* Date.swift in Sources */,
 				63A0375925E1660C0057B776 /* BaseError.swift in Sources */,
 				63A0379625E2E79C0057B776 /* Temperature.swift in Sources */,
 				63A037E325E416AF0057B776 /* Weather.xcdatamodeld in Sources */,
 				63A0375D25E166CC0057B776 /* URL.swift in Sources */,
+				63A0382925E579F90057B776 /* Double.swift in Sources */,
 				63A0378F25E2E6E80057B776 /* ForecastWeather.swift in Sources */,
 				63A037A925E31ABB0057B776 /* LikedPageVC.swift in Sources */,
 				63A0382125E554BE0057B776 /* CityPollution.swift in Sources */,

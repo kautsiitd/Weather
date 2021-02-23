@@ -8,7 +8,7 @@
 import Foundation
 struct ForecastWeather: Codable {
     let city: City
-    let cod: Int
+    let cod: String
     let message: Double
     ///A number of days returned in the API response
     let cnt: Int
@@ -19,7 +19,7 @@ struct ForecastWeather: Codable {
 extension ForecastWeather {
     struct WeatherDayDetail: Codable {
         ///Time of data forecasted, unix, UTC
-        let dt: Int
+        let dt: Double
         let main: Main
         let weather: [Weather]
         ///Cloudiness **%**
@@ -28,6 +28,7 @@ extension ForecastWeather {
         let visibility: Int
         ///Probability of precipitation
         let pop: Float
-        let rain: Rain
+        let rain: Rain?
+        let dtTxt: String
     }
 }
