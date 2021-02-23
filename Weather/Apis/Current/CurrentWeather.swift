@@ -65,18 +65,6 @@ extension CurrentWeather {
 
 //MARK:- Temporary Structures
 extension CurrentWeather {
-    struct Main: Codable {
-        let temp: Double
-        let feelsLike: CGFloat
-        let tempMin: Double
-        let tempMax: Double
-        let pressure: Int
-        let humidity: Int
-    }
-    struct Cloud: Codable {
-        let all: Int
-        
-    }
     struct Sys: Codable {
         let type: Int?
         let id: Int?
