@@ -39,6 +39,7 @@ struct CurrentWeather: Codable {
 //MARK:- Available Functions
 extension CurrentWeather {
     func save(to context: NSManagedObjectContext) throws {
+        if isPresent(in: context) { return }
         let cityWeather = CityWeather(context: context)
         cityWeather.name = name
         cityWeather.temp = main.temp
