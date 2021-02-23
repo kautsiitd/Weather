@@ -114,6 +114,7 @@ extension CityWeatherVC: ApiRespondable {
         lowestTempLabel.text = "L: \(cityWeather.main.tempMin.i)°"
         highestTempLabel.text = "H: \(cityWeather.main.tempMax.i)°"
         collectionView.reloadData()
+        likeButton.isSelected = cityWeather.isPresent(in: context)
         likeButton.isEnabled = true
         loader.stopAnimating()
     }
