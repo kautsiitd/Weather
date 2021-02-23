@@ -12,7 +12,7 @@ class SearchPageVC: BaseViewController {
     @IBOutlet private var searchBar: UISearchBar!
     @IBOutlet private var tableView: UITableView!
     //MARK:- Properties
-    private let data: [String] = ["Delhi", "Mumbai", "London", "Budaun"]
+    private let data: [String] = ["Delhi", "Mumbai", "London", "Bangalore"]
 }
 
 //MARK:- UITableView
@@ -29,7 +29,10 @@ extension SearchPageVC: UITableViewDataSource {
 
 extension SearchPageVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let cityWeatherVC = storyboard.instantiateViewController(withIdentifier: "CityWeatherVC") as! CityWeatherVC
+        cityWeatherVC.query = data[indexPath.row]
+        present(cityWeatherVC, animated: true)
     }
 }
 

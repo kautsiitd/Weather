@@ -28,6 +28,18 @@ class CityWeatherVC: BaseViewController {
         api.delegate = self
         return api
     }()
+    var query: String? { didSet {
+        loader.startAnimating()
+        api.query = query
+        api.makeGetRequest()
+    }}
+    var location: CLLocation? { didSet {
+        guard let location = location else { return }
+        loader.startAnimating()
+        api.location = Coordinates(from: location)
+        api.makeGetRequest()
+        locationManager.stopUpdatingLocation()
+    }}
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,17 +74,14 @@ extension CityWeatherVC: CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         switch manager.authorizationStatus {
         case .denied, .notDetermined, .restricted:
-            api.query = "Globe"
-            api.makeGetRequest()
+            query = "Globe"
         case .authorizedAlways, .authorizedWhenInUse:
             locationManager.startUpdatingLocation()
         @unknown default: return
         }
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        api.location = Coordinates(from: locations.last!)
-        api.makeGetRequest()
-        locationManager.stopUpdatingLocation()
+        location = locations.last!
     }
 }
 
