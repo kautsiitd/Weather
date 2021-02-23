@@ -107,21 +107,14 @@ extension CityWeatherVC: CLLocationManagerDelegate {
 //MARK:- ApiRespondable
 extension CityWeatherVC: ApiRespondable {
     func didFetchSuccessfully(for params: [String : AnyHashable]) {
-        guard let cityWeather = api.cityWeather else { loader.stopAnimating(); return }
-        cityNameLabel.text = cityWeather.name
-        weatherNameLabel.text = cityWeather.weather.first?.main
-        temperatureLabel.text = "\(cityWeather.main.temp.i)°"
-        lowestTempLabel.text = "L: \(cityWeather.main.tempMin.i)°"
-        highestTempLabel.text = "H: \(cityWeather.main.tempMax.i)°"
-        collectionView.reloadData()
-        likeButton.isSelected = cityWeather.isPresent(in: context)
+        refreshView()
         likeButton.isEnabled = true
         loader.stopAnimating()
     }
     func didFail(with error: BaseError, for params: [String : AnyHashable]) {
-        NSLog(error.localizedDescription)
-        likeButton.isEnabled = true
+        likeButton.isEnabled = false
         loader.stopAnimating()
+        showError(true, with: error.localizedDescription)
     }
 }
 
@@ -138,5 +131,15 @@ extension CityWeatherVC {
     }
     private func setupCollectionView() {
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 18, bottom: 18, right: 18)
+    }
+    private func refreshView() {
+        guard let cityWeather = api.cityWeather else { loader.stopAnimating(); return }
+        cityNameLabel.text = cityWeather.name
+        weatherNameLabel.text = cityWeather.weather.first?.main
+        temperatureLabel.text = "\(cityWeather.main.temp.i)°"
+        lowestTempLabel.text = "L: \(cityWeather.main.tempMin.i)°"
+        highestTempLabel.text = "H: \(cityWeather.main.tempMax.i)°"
+        collectionView.reloadData()
+        likeButton.isSelected = cityWeather.isPresent(in: context)
     }
 }
