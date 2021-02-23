@@ -137,6 +137,7 @@ extension CityWeatherVC {
 extension CityWeatherVC {
     private func setupView() {
         loader.color = .white
+        errorLabel.textColor = .white
         setupLikeButton()
         setupCollectionView()
     }
