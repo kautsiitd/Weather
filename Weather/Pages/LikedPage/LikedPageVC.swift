@@ -37,10 +37,19 @@ extension LikedPageVC: UITableViewDataSource {
     }
 }
 
+extension LikedPageVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let cityWeatherVC = storyboard.instantiateViewController(withIdentifier: "CityWeatherVC") as! CityWeatherVC
+        cityWeatherVC.query = fetchedRC.object(at: indexPath).name
+        present(cityWeatherVC, animated: true)
+    }
+}
+
 //MARK:- Helpers
 extension LikedPageVC {
     private func setupTableView() {
-        tableView.contentInset = UIEdgeInsets(top: 44, left: 0, bottom: 44, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     private func fetchCities() {
         let request = CityWeather.fetchAllRequest()
