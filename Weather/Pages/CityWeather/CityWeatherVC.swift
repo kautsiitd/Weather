@@ -16,7 +16,8 @@ class CityWeatherVC: BaseViewController {
     @IBOutlet private var temperatureLabel: UILabel!
     @IBOutlet private var lowestTempLabel: UILabel!
     @IBOutlet private var highestTempLabel: UILabel!
-    @IBOutlet private var collectionView: UICollectionView!
+    @IBOutlet private var forecastCV: UICollectionView!
+    @IBOutlet private var currentInfoCV: UICollectionView!
     //MARK:- Properties
     private let context = CoreDataManager.shared.container.viewContext
     private lazy var locationManager: CLLocationManager = {
@@ -26,21 +27,37 @@ class CityWeatherVC: BaseViewController {
         locationManager.requestWhenInUseAuthorization()
         return locationManager
     }()
-    private lazy var api: CurrentWeatherApi = {
-        let api = CurrentWeatherApi()
-        api.delegate = self
-        return api
+    private lazy var currentApi: CurrentWeatherApi = {
+        let currentApi = CurrentWeatherApi()
+        currentApi.delegate = self
+        return currentApi
+    }()
+    private lazy var forecastApi: ForecastApi = {
+        let forecastApi = ForecastApi()
+        forecastApi.delegate = self
+        return forecastApi
+    }()
+    private lazy var pollutionApi: PollutionApi = {
+        let pollutionApi = PollutionApi()
+        pollutionApi.delegate = self
+        return pollutionApi
     }()
     var query: String? { didSet {
         loader.startAnimating()
-        api.query = query
-        api.makeGetRequest()
+        currentApi.query = query
+        currentApi.makeGetRequest()
+        forecastApi.query = query
+        forecastApi.makeGetRequest()
     }}
     var location: CLLocation? { didSet {
         guard let location = location else { return }
         loader.startAnimating()
-        api.location = Coordinates(from: location)
-        api.makeGetRequest()
+        let coords = Coordinates(from: location)
+        currentApi.location = coords
+        currentApi.makeGetRequest()
+        forecastApi.location = coords
+        forecastApi.makeGetRequest()
+        pollutionApi.location = coords
         locationManager.stopUpdatingLocation()
     }}
     
@@ -57,7 +74,7 @@ class CityWeatherVC: BaseViewController {
 //MARK:- IBActions
 extension CityWeatherVC {
     @IBAction private func toggleLike() {
-        guard let cityWeather = api.cityWeather else { return }
+        guard let cityWeather = currentApi.cityWeather else { return }
         likeButton.animatePop()
         likeButton.isSelected = !likeButton.isSelected
         do { likeButton.isSelected ? try cityWeather.save(to: context) :
@@ -72,19 +89,19 @@ extension CityWeatherVC {
 //MARK:- CollectionView
 extension CityWeatherVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        api.cityWeather?.summaryDict.count ?? 0
+        currentApi.cityWeather?.summaryDict.count ?? 0
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let summaryCell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherSummaryCell.cellIdentifier, for: indexPath) as! WeatherSummaryCell
-        summaryCell.data = api.cityWeather?.summaryDict[indexPath.row]
+        let summaryCell = currentInfoCV.dequeueReusableCell(withReuseIdentifier: WeatherSummaryCell.cellIdentifier, for: indexPath) as! WeatherSummaryCell
+        summaryCell.data = currentApi.cityWeather?.summaryDict[indexPath.row]
         return summaryCell
     }
 }
 
 extension CityWeatherVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let insets = collectionView.contentInset.left + collectionView.contentInset.right
-        let totalWidth = collectionView.frame.width - insets
+        let insets = currentInfoCV.contentInset.left + currentInfoCV.contentInset.right
+        let totalWidth = currentInfoCV.frame.width - insets
         return CGSize(width: totalWidth/2, height: 50)
     }
 }
@@ -108,14 +125,24 @@ extension CityWeatherVC: CLLocationManagerDelegate {
 //MARK:- ApiRespondable
 extension CityWeatherVC: ApiRespondable {
     func didFetchSuccessfully(for params: [String : AnyHashable]) {
-        refreshView()
+        switch params["ApiType"] as? String {
+        case currentApi.id: refreshView()
+        case forecastApi.id: forecastCV.reloadData()
+        case pollutionApi.id: return
+        default: return
+        }
         likeButton.isEnabled = true
         loader.stopAnimating()
     }
     func didFail(with error: BaseError, for params: [String : AnyHashable]) {
+        switch params["ApiType"] as? String {
+        case currentApi.id: showError(true, with: error.localizedDescription)
+        case forecastApi.id: NSLog("ForecastApi Failed: \(error.localizedDescription)"); return
+        case pollutionApi.id: NSLog("PollutionApi Failed: \(error.localizedDescription)"); return
+        default: return
+        }
         likeButton.isEnabled = false
         loader.stopAnimating()
-        showError(true, with: error.localizedDescription)
     }
 }
 
@@ -128,7 +155,7 @@ extension CityWeatherVC {
         guard let userInfo = notification.userInfo,
               let cityName = userInfo["cityName"] as? String, let status = userInfo["status"] as? String
         else { return }
-        if cityName != api.cityWeather?.name { return }
+        if cityName != currentApi.cityWeather?.name { return }
         likeButton.isSelected = status == "added"
     }
 }
@@ -146,16 +173,16 @@ extension CityWeatherVC {
         likeButton.setImage(UIImage(systemName: "heart.fill"), for: .selected)
     }
     private func setupCollectionView() {
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 18, bottom: 18, right: 18)
+        currentInfoCV.contentInset = UIEdgeInsets(top: 0, left: 18, bottom: 18, right: 18)
     }
     private func refreshView() {
-        guard let cityWeather = api.cityWeather else { loader.stopAnimating(); return }
+        guard let cityWeather = currentApi.cityWeather else { loader.stopAnimating(); return }
         cityNameLabel.text = cityWeather.name
         weatherNameLabel.text = cityWeather.weather.first?.main
         temperatureLabel.text = "\(cityWeather.main.temp.i)°"
         lowestTempLabel.text = "L: \(cityWeather.main.tempMin.i)°"
         highestTempLabel.text = "H: \(cityWeather.main.tempMax.i)°"
-        collectionView.reloadData()
+        currentInfoCV.reloadData()
         likeButton.isSelected = cityWeather.isPresent(in: context)
     }
 }
