@@ -260,7 +260,7 @@
                                 </connections>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YBE-7T-n1e">
-                                <rect key="frame" x="0.0" y="487.5" width="414" height="325.5"/>
+                                <rect key="frame" x="0.0" y="462.5" width="414" height="350.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="kEG-pi-EjZ">
                                     <size key="itemSize" width="128" height="128"/>
@@ -331,7 +331,7 @@
                             <constraint firstAttribute="trailing" secondItem="jQ5-AH-ywG" secondAttribute="trailing" id="Dgk-mM-vYw"/>
                             <constraint firstItem="xPe-cY-NzQ" firstAttribute="top" secondItem="Kk0-Av-cD0" secondAttribute="bottom" constant="8" symbolic="YES" id="Mb9-Rf-JPh"/>
                             <constraint firstItem="lqo-sp-ghI" firstAttribute="centerX" secondItem="men-ZU-1qe" secondAttribute="centerX" id="P71-S8-5ev"/>
-                            <constraint firstItem="YBE-7T-n1e" firstAttribute="top" secondItem="fxk-ti-oHS" secondAttribute="bottom" constant="40" id="SSx-a0-ZJ4"/>
+                            <constraint firstItem="YBE-7T-n1e" firstAttribute="top" secondItem="fxk-ti-oHS" secondAttribute="bottom" constant="15" id="SSx-a0-ZJ4"/>
                             <constraint firstItem="U1f-6C-mqL" firstAttribute="leading" secondItem="men-ZU-1qe" secondAttribute="leading" constant="18" id="SvF-B8-JXK"/>
                             <constraint firstItem="DTe-KB-mEW" firstAttribute="centerX" secondItem="men-ZU-1qe" secondAttribute="centerX" id="V8g-kp-pzd"/>
                             <constraint firstItem="Kk0-Av-cD0" firstAttribute="top" secondItem="men-ZU-1qe" secondAttribute="top" constant="60" id="VBK-L6-P38"/>
