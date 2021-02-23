@@ -27,5 +27,19 @@ struct PollutionComponent: Codable {
 extension Pollution {
     struct Main: Codable {
         let aqi: Int
+        
+        var aqiName: String {
+            switch aqi {
+            case 1: return "Good"
+            case 2: return "Fair"
+            case 3: return "Moderate"
+            case 4: return "Poor"
+            case 5: return "Very Poor"
+            default: return "Unknown"
+            }
+        }
+        var relativePos: Float {
+            (2*aqi-1)/(2*5)
+        }
     }
 }

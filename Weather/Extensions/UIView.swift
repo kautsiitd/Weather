@@ -14,16 +14,22 @@ extension UIView {
             self.transform = .identity
            }, completion: nil)
     }
+    var gradientLayerName: String { return "gradientLayer" }
     func addGradiant(of colors: [UIColor], from startPoint: Point, to endPoint: Point, at index: UInt32 = 0, shouldRasterize: Bool = false) {
+        removeGradient()
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = colors.map({ $0.cgColor })
         gradientLayer.startPoint = startPoint.relativePos
         gradientLayer.endPoint = endPoint.relativePos
         gradientLayer.frame = bounds
-        gradientLayer.name = "gradientLayer"
+        gradientLayer.name = gradientLayerName
         gradientLayer.shouldRasterize = shouldRasterize
 
         layer.insertSublayer(gradientLayer, at: index)
+    }
+    func removeGradient() {
+        if let oldlayer = layer.sublayers?.filter({$0.name == gradientLayerName}).first {
+            oldlayer.removeFromSuperlayer()}
     }
 }
 

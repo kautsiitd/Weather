@@ -13,7 +13,7 @@ final class PollutionApi: BaseApiModal {
     private var language: Language = .english
     var cityPollution: CityPollution?
     //MARK:- Fetchable
-    override var apiEndPoint: String { "data/2.5/weather" }
+    override var apiEndPoint: String { "data/2.5/air_pollution" }
     override var params: [String : AnyHashable] {
         ["lat": location?.lat, "lon": location?.lon,
          "units": units.rawValue, "lang": language.code]
