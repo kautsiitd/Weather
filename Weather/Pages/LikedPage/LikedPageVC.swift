@@ -7,7 +7,7 @@
 
 import UIKit
 import CoreData
-class LikedPageVC: UIViewController {
+class LikedPageVC: BaseViewController {
     //MARK:- Properties
     private let context = CoreDataManager.shared.container.viewContext
     private var fetchedRC: NSFetchedResultsController<CityWeather>!
@@ -17,7 +17,11 @@ class LikedPageVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         fetchCities()
+        fetchedRC.fetchedObjects?.isEmpty ?? true ? showError(true, with: "No Data") : showError(false)
     }
 }
 
