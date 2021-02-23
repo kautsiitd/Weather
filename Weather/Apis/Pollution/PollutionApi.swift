@@ -6,7 +6,7 @@
 //
 
 import Foundation
-class PollutionApi: BaseApiModal {
+final class PollutionApi: BaseApiModal {
     //MARK:- Properties
     var location: Coordinates?
     private var units: MeasurementUnit = .metric

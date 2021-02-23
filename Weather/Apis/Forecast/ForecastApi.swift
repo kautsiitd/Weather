@@ -6,7 +6,7 @@
 //
 
 import Foundation
-class ForecastApi: BaseApiModal {
+final class ForecastApi: BaseApiModal {
     //MARK:- Properties
     var query: String?
     var location: Coordinates?

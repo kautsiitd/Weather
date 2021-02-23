@@ -7,7 +7,7 @@
 
 import UIKit
 import CoreData
-class SearchPageVC: BaseViewController {
+final class SearchPageVC: BaseViewController {
     //MARK:- Elements
     @IBOutlet private var searchBar: UISearchBar!
     @IBOutlet private var tableView: UITableView!

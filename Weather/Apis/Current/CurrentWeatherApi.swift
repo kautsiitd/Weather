@@ -6,7 +6,7 @@
 //
 
 import Foundation
-class CurrentWeatherApi: BaseApiModal {
+final class CurrentWeatherApi: BaseApiModal {
     //MARK:- Properties
     var query: String?
     var location: Coordinates?

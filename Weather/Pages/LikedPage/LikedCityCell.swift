@@ -6,7 +6,7 @@
 //
 
 import UIKit
-class LikedCityCell: UITableViewCell {
+final class LikedCityCell: UITableViewCell {
     //MARK:- Elements
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var tempLabel: UILabel!

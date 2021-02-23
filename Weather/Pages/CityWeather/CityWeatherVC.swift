@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 import CoreData
-class CityWeatherVC: BaseViewController {
+final class CityWeatherVC: BaseViewController {
     //MARK:- Elements
     @IBOutlet private var likeButton: UIButton!
     @IBOutlet private var cityNameLabel: UILabel!

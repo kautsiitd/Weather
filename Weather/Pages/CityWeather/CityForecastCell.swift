@@ -6,7 +6,7 @@
 //
 
 import UIKit
-class CityForecastCell: UICollectionViewCell {
+final class CityForecastCell: UICollectionViewCell {
     //MARK:- Elements
     @IBOutlet private var timeLabel: UILabel!
     @IBOutlet private var iconImageView: UIImageView!

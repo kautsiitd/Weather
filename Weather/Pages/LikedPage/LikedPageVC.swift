@@ -7,7 +7,7 @@
 
 import UIKit
 import CoreData
-class LikedPageVC: BaseViewController {
+final class LikedPageVC: BaseViewController {
     //MARK:- Properties
     private let context = CoreDataManager.shared.container.viewContext
     private var fetchedRC: NSFetchedResultsController<CityWeather>!
