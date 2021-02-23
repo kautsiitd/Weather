@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 struct CurrentWeather: Codable {
     let coord: Coordinates
     let weather: [Weather]
@@ -33,6 +34,19 @@ struct CurrentWeather: Codable {
          6: (key: "VISIBILITY",     value: "\(visibility/1000.0) km"),
          7: (key: "LOCAL TIME",     value: dt.localTime)]
     }()
+}
+
+//MARK:- Available Functions
+extension CurrentWeather {
+    func save(to context: NSManagedObjectContext) throws {
+        let cityWeather = CityWeather(context: context)
+        cityWeather.name = name
+        cityWeather.temp = main.temp
+        try context.save()
+    }
+    func delete(from context: NSManagedObjectContext) throws {
+        NSLog("Delete is not Supported yet!!")
+    }
 }
 
 //MARK:- Temporary Structures

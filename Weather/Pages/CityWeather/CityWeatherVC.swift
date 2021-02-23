@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreLocation
+import CoreData
 class CityWeatherVC: BaseViewController {
     //MARK:- Elements
     @IBOutlet private var likeButton: UIButton!
@@ -17,6 +18,7 @@ class CityWeatherVC: BaseViewController {
     @IBOutlet private var highestTempLabel: UILabel!
     @IBOutlet private var collectionView: UICollectionView!
     //MARK:- Properties
+    private let context = CoreDataManager.shared.container.viewContext
     private lazy var locationManager: CLLocationManager = {
         let locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -54,9 +56,15 @@ class CityWeatherVC: BaseViewController {
 //MARK:- IBActions
 extension CityWeatherVC {
     @IBAction private func toggleLike() {
+        guard let cityWeather = api.cityWeather else { return }
         likeButton.animatePop()
         likeButton.isSelected = !likeButton.isSelected
-        likeButton.tintColor = likeButton.isSelected ? .red : .white
+        do { likeButton.isSelected ? try cityWeather.save(to: context) :
+                                     try cityWeather.delete(from: context) }
+        catch let error {
+            likeButton.isSelected = !likeButton.isSelected
+            NSLog(error.localizedDescription)
+        }
     }
 }
 
