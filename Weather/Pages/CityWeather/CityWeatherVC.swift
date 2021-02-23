@@ -119,6 +119,7 @@ extension CityWeatherVC: ApiRespondable {
 //MARK:- Helpers
 extension CityWeatherVC {
     private func setupView() {
+        loader.color = .white
         setupLikeButton()
         setupCollectionView()
     }

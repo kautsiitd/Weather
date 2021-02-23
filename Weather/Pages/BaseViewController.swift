@@ -30,6 +30,7 @@ extension BaseViewController {
 extension BaseViewController {
     private func setupLoader() {
         loader.hidesWhenStopped = true
+        loader.style = .medium
         view.addSubview(loader)
         loader.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
