@@ -7,8 +7,10 @@
 
 import UIKit
 import CoreLocation
+import CoreData
 class CityWeatherVC: BaseViewController {
     //MARK:- Elements
+    @IBOutlet private var likeButton: UIButton!
     @IBOutlet private var cityNameLabel: UILabel!
     @IBOutlet private var weatherNameLabel: UILabel!
     @IBOutlet private var temperatureLabel: UILabel!
@@ -16,6 +18,7 @@ class CityWeatherVC: BaseViewController {
     @IBOutlet private var highestTempLabel: UILabel!
     @IBOutlet private var collectionView: UICollectionView!
     //MARK:- Properties
+    private let context = CoreDataManager.shared.container.viewContext
     private lazy var locationManager: CLLocationManager = {
         let locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -43,9 +46,26 @@ class CityWeatherVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupCollectionView()
+        setupView()
+        registerForNotifications()
+        likeButton.isEnabled = false
         loader.startAnimating()
         locationManager.startUpdatingLocation()
+    }
+}
+
+//MARK:- IBActions
+extension CityWeatherVC {
+    @IBAction private func toggleLike() {
+        guard let cityWeather = api.cityWeather else { return }
+        likeButton.animatePop()
+        likeButton.isSelected = !likeButton.isSelected
+        do { likeButton.isSelected ? try cityWeather.save(to: context) :
+                                     try cityWeather.delete(from: context) }
+        catch let error {
+            likeButton.isSelected = !likeButton.isSelected
+            NSLog(error.localizedDescription)
+        }
     }
 }
 
@@ -88,6 +108,46 @@ extension CityWeatherVC: CLLocationManagerDelegate {
 //MARK:- ApiRespondable
 extension CityWeatherVC: ApiRespondable {
     func didFetchSuccessfully(for params: [String : AnyHashable]) {
+        refreshView()
+        likeButton.isEnabled = true
+        loader.stopAnimating()
+    }
+    func didFail(with error: BaseError, for params: [String : AnyHashable]) {
+        likeButton.isEnabled = false
+        loader.stopAnimating()
+        showError(true, with: error.localizedDescription)
+    }
+}
+
+//MARK:- Notifications
+extension CityWeatherVC {
+    private func registerForNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(libraryUpdated), name: Notifications.libraryUpdated.name, object: nil)
+    }
+    @objc private func libraryUpdated(notification: NSNotification) {
+        guard let userInfo = notification.userInfo,
+              let cityName = userInfo["cityName"] as? String, let status = userInfo["status"] as? String
+        else { return }
+        if cityName != api.cityWeather?.name { return }
+        likeButton.isSelected = status == "added"
+    }
+}
+
+//MARK:- Helpers
+extension CityWeatherVC {
+    private func setupView() {
+        loader.color = .white
+        setupLikeButton()
+        setupCollectionView()
+    }
+    private func setupLikeButton() {
+        likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        likeButton.setImage(UIImage(systemName: "heart.fill"), for: .selected)
+    }
+    private func setupCollectionView() {
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 18, bottom: 18, right: 18)
+    }
+    private func refreshView() {
         guard let cityWeather = api.cityWeather else { loader.stopAnimating(); return }
         cityNameLabel.text = cityWeather.name
         weatherNameLabel.text = cityWeather.weather.first?.main
@@ -95,16 +155,6 @@ extension CityWeatherVC: ApiRespondable {
         lowestTempLabel.text = "L: \(cityWeather.main.tempMin.i)°"
         highestTempLabel.text = "H: \(cityWeather.main.tempMax.i)°"
         collectionView.reloadData()
-        loader.stopAnimating()
-    }
-    func didFail(with error: BaseError, for params: [String : AnyHashable]) {
-        loader.stopAnimating()
-    }
-}
-
-//MARK:- Helpers
-extension CityWeatherVC {
-    private func setupCollectionView() {
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 18, bottom: 18, right: 18)
+        likeButton.isSelected = cityWeather.isPresent(in: context)
     }
 }

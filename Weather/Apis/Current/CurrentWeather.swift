@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 struct CurrentWeather: Codable {
     let coord: Coordinates
     let weather: [Weather]
@@ -31,8 +32,35 @@ struct CurrentWeather: Codable {
          4: (key: "FEELS LIKE",     value: "\(main.feelsLike.rounded().i)°"),
          5: (key: "PRESSURE",       value: "\(main.pressure) hPa"),
          6: (key: "VISIBILITY",     value: "\(visibility/1000.0) km"),
-         7: (key: "LAST UPDATED",   value: dt.localTime)]
+         7: (key: "LOCAL TIME",     value: dt.localTime)]
     }()
+}
+
+//MARK:- Available Functions
+extension CurrentWeather {
+    func save(to context: NSManagedObjectContext) throws {
+        if isPresent(in: context) { return }
+        let cityWeather = CityWeather(context: context)
+        cityWeather.name = name
+        cityWeather.temp = main.temp
+        try context.save()
+        NotificationCenter.default.post(name: Notifications.libraryUpdated.name, object: nil,
+                                        userInfo: ["cityName": name, "status": "added"])
+    }
+    func delete(from context: NSManagedObjectContext) throws {
+        let request = CityWeather.fetchRequest(for: name)
+        guard let cities = try? context.fetch(request), let city = cities.first else { return }
+        let cityName = city.name
+        context.delete(city)
+        try context.save()
+        NotificationCenter.default.post(name: Notifications.libraryUpdated.name, object: nil,
+                                        userInfo: ["cityName": cityName, "status": "deleted"])
+    }
+    func isPresent(in context: NSManagedObjectContext) -> Bool {
+        let request = CityWeather.fetchRequest(for: name)
+        guard let cities = try? context.fetch(request) else { return false }
+        return !cities.isEmpty
+    }
 }
 
 //MARK:- Temporary Structures
