@@ -7,11 +7,26 @@
 
 import UIKit
 extension Date {
-    func string(in format: String) -> String {
+    func string(in format: String, for timezone: Int? = nil) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = .medium
         dateFormatter.dateStyle = .medium
-        dateFormatter.timeZone = .current
+        if let timezone = timezone {
+            let hoursString: String
+            let hours = timezone/3600
+            if hours < -9 { hoursString = "-\(abs(hours))" }
+            else if hours < 0 { hoursString = "-0\(abs(hours))" }
+            else if hours < 10 { hoursString = "+0\(hours)" }
+            else { hoursString = "+\(hours)" }
+            let minutesString: String
+            let minutes = (timezone%3600)/60
+            if minutes < 10 { minutesString = "0\(minutes)" }
+            else { minutesString = "\(minutes)" }
+            let customTimezone = NSTimeZone(name: "UTC\(hoursString)\(minutesString)")! as TimeZone
+            dateFormatter.timeZone = .some(customTimezone)
+        } else {
+            dateFormatter.timeZone = .current
+        }
         dateFormatter.dateFormat = format
         dateFormatter.amSymbol = "AM"
         dateFormatter.pmSymbol = "PM"

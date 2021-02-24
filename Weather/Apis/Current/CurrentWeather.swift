@@ -25,14 +25,14 @@ struct CurrentWeather: Codable {
     
     //MARK:- Calculated Properties
     private(set) lazy var summaryDict: [Int: KeyValueString] = {
-        [0: (key: "SUNRISE",        value: sys.sunrise.date?.string(in: "h:mm a") ?? "--"),
-         1: (key: "SUNSET",         value: sys.sunset.date?.string(in: "h:mm a") ?? "--"),
+        [0: (key: "SUNRISE",        value: sys.sunrise.date?.string(in: "h:mm a", for: timezone) ?? "--"),
+         1: (key: "SUNSET",         value: sys.sunset.date?.string(in: "h:mm a", for: timezone) ?? "--"),
          2: (key: "HUMIDITY",       value: "\(main.humidity)%"),
          3: (key: "WIND",           value: wind.readableFormat),
          4: (key: "FEELS LIKE",     value: "\(main.feelsLike.rounded().i)°"),
          5: (key: "PRESSURE",       value: "\(main.pressure) hPa"),
          6: (key: "VISIBILITY",     value: "\(visibility/1000.0) km"),
-         7: (key: "LOCAL TIME",     value: dt.date?.string(in: "h:mm a") ?? "--")]
+         7: (key: "LOCAL TIME",     value: dt.date?.string(in: "h:mm a", for: timezone) ?? "--")]
     }()
 }
 

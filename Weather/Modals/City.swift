@@ -17,7 +17,7 @@ struct City: Codable {
     let country: String
     let population: Int?
     ///Shift in seconds from UTC
-    let timezone: Double?
+    let timezone: Int?
     let sunrise: Double?
     let sunset: Double?
 }
