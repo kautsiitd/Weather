@@ -57,15 +57,16 @@ final class CityWeatherVC: BaseViewController {
     }}
     var location: CLLocation? { didSet {
         guard let location = location else { return }
+        coords = Coordinates(from: location)
+    }}
+    var coords: Coordinates? { didSet {
         loader.startAnimating()
-        let coords = Coordinates(from: location)
         currentApi.location = coords
         currentApi.makeGetRequest()
         forecastApi.location = coords
         forecastApi.makeGetRequest()
         pollutionApi.location = coords
         pollutionApi.makeGetRequest()
-        locationManager.stopUpdatingLocation()
     }}
     
     override func viewDidLoad() {
@@ -73,7 +74,7 @@ final class CityWeatherVC: BaseViewController {
         setupView()
         registerForNotifications()
         loader.startAnimating()
-        locationManager.startUpdatingLocation()
+        if query == nil && location == nil && coords == nil { locationManager.startUpdatingLocation() }
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -145,6 +146,7 @@ extension CityWeatherVC: CLLocationManagerDelegate {
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         location = locations.last!
+        locationManager.stopUpdatingLocation()
     }
 }
 
@@ -195,8 +197,6 @@ extension CityWeatherVC {
 extension CityWeatherVC {
     private func setupView() {
         likeButton.isHidden = true
-        loader.color = .white
-        errorLabel.textColor = .white
         setupLikeButton()
         setupAqiView()
         setupCollectionView()

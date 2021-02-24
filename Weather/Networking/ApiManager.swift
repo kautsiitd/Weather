@@ -12,7 +12,10 @@ class ApiManager {
     private init() {}
     private let baseURL = URL(string: "https://api.openweathermap.org")!
     private let apiKey = "da96beb35a165f871ae1aff335f296b9"
-    
+}
+
+//MARK:- Available Functions
+extension ApiManager {
     func getRequest(_ delegate: Fetchable) throws {
         let endPoint = delegate.apiEndPoint
         let params = delegate.params
@@ -41,6 +44,25 @@ class ApiManager {
         }.resume()
     }
     
+    func loadRequest(_ delegate: CoreLoadable) throws {
+        guard let path = Bundle.main.path(forResource: delegate.fileName, ofType: delegate.fileExtension)
+        else { throw FileError.notFound }
+        let fileURL = URL(fileURLWithPath: path)
+        DispatchQueue.global().async {
+            do { let data = try Data(contentsOf: fileURL, options: .mappedIfSafe)
+                try delegate.parse(data)
+                DispatchQueue.main.async {
+                    delegate.didFetchSuccessfully(for: [:]) }
+                }
+            catch let error {
+                DispatchQueue.main.async { delegate.didFail(with: FileError.custom(error), for: [:]) }
+            }
+        }
+    }
+}
+
+//MARK:- Helpers
+extension ApiManager {
     private func update(_ params: [String: AnyHashable]) -> [String: AnyHashable] {
         var newParams = params
         newParams["apiKey"] = apiKey

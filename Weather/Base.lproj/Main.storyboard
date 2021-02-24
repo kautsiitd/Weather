@@ -21,6 +21,9 @@
                             <searchBar contentMode="redraw" barStyle="black" prompt="Enter city or zipcode" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="kVB-gt-VxF">
                                 <rect key="frame" x="0.0" y="44" width="414" height="90"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="xRk-5H-zbC" id="AYZ-CV-RWs"/>
+                                </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AjI-F9-gXT">
                                 <rect key="frame" x="0.0" y="134" width="414" height="679"/>

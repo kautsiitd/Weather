@@ -31,6 +31,7 @@ extension BaseViewController {
     private func setupLoader() {
         loader.hidesWhenStopped = true
         loader.style = .medium
+        loader.color = .white
         view.addSubview(loader)
         loader.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -41,7 +42,7 @@ extension BaseViewController {
     private func setupErrorView() {
         view.addSubview(errorLabel)
         errorLabel.font = .systemFont(ofSize: 18, weight: .medium)
-        errorLabel.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        errorLabel.textColor = .white
         errorLabel.textAlignment = .center
         errorLabel.numberOfLines = 0
         errorLabel.translatesAutoresizingMaskIntoConstraints = false
