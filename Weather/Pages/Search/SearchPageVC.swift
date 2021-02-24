@@ -26,6 +26,9 @@ final class SearchPageVC: BaseViewController {
         loader.startAnimating()
         searchApi.loadData()
     }
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }
 
 //MARK:- ApiRespondable
