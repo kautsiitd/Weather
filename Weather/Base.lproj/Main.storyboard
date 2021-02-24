@@ -97,7 +97,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MhR-Ii-qpK">
-                                <rect key="frame" x="346" y="62" width="50" height="50"/>
+                                <rect key="frame" x="340" y="62" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="0LK-Jh-OjF"/>
                                     <constraint firstAttribute="width" secondItem="MhR-Ii-qpK" secondAttribute="height" multiplier="1:1" id="2CW-Ek-rMa"/>
@@ -105,6 +105,9 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal">
                                     <imageReference key="image" image="heart" catalog="system" symbolScale="large" renderingMode="template"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" weight="medium">
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                    </preferredSymbolConfiguration>
                                 </state>
                                 <connections>
                                     <action selector="toggleLike" destination="qnR-4K-4ve" eventType="touchUpInside" id="4dW-b4-T7T"/>
@@ -343,7 +346,7 @@
                             <constraint firstItem="DTe-KB-mEW" firstAttribute="top" secondItem="lqo-sp-ghI" secondAttribute="bottom" constant="5" id="cmC-xc-nXq"/>
                             <constraint firstItem="xPe-cY-NzQ" firstAttribute="centerX" secondItem="men-ZU-1qe" secondAttribute="centerX" id="dR6-cL-tZd"/>
                             <constraint firstItem="lqo-sp-ghI" firstAttribute="top" secondItem="xPe-cY-NzQ" secondAttribute="bottom" constant="10" id="jhD-qk-wWs"/>
-                            <constraint firstItem="men-ZU-1qe" firstAttribute="trailing" secondItem="MhR-Ii-qpK" secondAttribute="trailing" constant="18" id="lAG-gQ-aYF"/>
+                            <constraint firstItem="men-ZU-1qe" firstAttribute="trailing" secondItem="MhR-Ii-qpK" secondAttribute="trailing" constant="24" id="lAG-gQ-aYF"/>
                             <constraint firstItem="MhR-Ii-qpK" firstAttribute="top" secondItem="men-ZU-1qe" secondAttribute="top" constant="18" id="lX1-Ax-JhI"/>
                             <constraint firstItem="YBE-7T-n1e" firstAttribute="leading" secondItem="men-ZU-1qe" secondAttribute="leading" id="nXa-0l-njh"/>
                             <constraint firstAttribute="bottom" secondItem="jQ5-AH-ywG" secondAttribute="bottom" id="oNc-pL-gw3"/>
