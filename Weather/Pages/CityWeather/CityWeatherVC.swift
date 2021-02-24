@@ -57,8 +57,10 @@ final class CityWeatherVC: BaseViewController {
     }}
     var location: CLLocation? { didSet {
         guard let location = location else { return }
+        coords = Coordinates(from: location)
+    }}
+    var coords: Coordinates? { didSet {
         loader.startAnimating()
-        let coords = Coordinates(from: location)
         currentApi.location = coords
         currentApi.makeGetRequest()
         forecastApi.location = coords

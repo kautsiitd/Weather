@@ -54,7 +54,7 @@ extension SearchPageVC: UITableViewDelegate {
         guard let city = searchApi.cities?[indexPath.row] else { return }
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let cityWeatherVC = storyboard.instantiateViewController(withIdentifier: "CityWeatherVC") as! CityWeatherVC
-        cityWeatherVC.query = city.name
+        cityWeatherVC.coords = city.coord
         present(cityWeatherVC, animated: true)
     }
 }
