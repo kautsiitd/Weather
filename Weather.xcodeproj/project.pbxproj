@@ -42,8 +42,6 @@
 		63A037C325E3750C0057B776 /* TypeAlias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A037C225E3750C0057B776 /* TypeAlias.swift */; };
 		63A037C925E39C5F0057B776 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A037C825E39C5F0057B776 /* Operators.swift */; };
 		63A037D225E3C3CC0057B776 /* SearchApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A037D125E3C3CC0057B776 /* SearchApi.swift */; };
-		63A037D725E414A50057B776 /* CityCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A037D625E414A50057B776 /* CityCore.swift */; };
-		63A037DB25E415790057B776 /* CoordinateCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A037DA25E415790057B776 /* CoordinateCore.swift */; };
 		63A037DE25E415D40057B776 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A037DD25E415D40057B776 /* CoreDataManager.swift */; };
 		63A037E325E416AF0057B776 /* Weather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 63A037E125E416AF0057B776 /* Weather.xcdatamodeld */; };
 		63A037E825E4A26E0057B776 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A037E725E4A26E0057B776 /* SearchCell.swift */; };
@@ -104,8 +102,6 @@
 		63A037C225E3750C0057B776 /* TypeAlias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAlias.swift; sourceTree = "<group>"; };
 		63A037C825E39C5F0057B776 /* Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		63A037D125E3C3CC0057B776 /* SearchApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchApi.swift; sourceTree = "<group>"; };
-		63A037D625E414A50057B776 /* CityCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCore.swift; sourceTree = "<group>"; };
-		63A037DA25E415790057B776 /* CoordinateCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateCore.swift; sourceTree = "<group>"; };
 		63A037DD25E415D40057B776 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		63A037E225E416AF0057B776 /* Weather.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Weather.xcdatamodel; sourceTree = "<group>"; };
 		63A037E725E4A26E0057B776 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
@@ -330,8 +326,6 @@
 		63A037D525E413630057B776 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				63A037D625E414A50057B776 /* CityCore.swift */,
-				63A037DA25E415790057B776 /* CoordinateCore.swift */,
 				63A037DD25E415D40057B776 /* CoreDataManager.swift */,
 				63A037E125E416AF0057B776 /* Weather.xcdatamodeld */,
 				63A037F625E4B9720057B776 /* CityWeather+CoreDataClass.swift */,
@@ -440,9 +434,7 @@
 				63A037BC25E36E190057B776 /* Int.swift in Sources */,
 				63A0378425E27F750057B776 /* Weather.swift in Sources */,
 				63A037E825E4A26E0057B776 /* SearchCell.swift in Sources */,
-				63A037DB25E415790057B776 /* CoordinateCore.swift in Sources */,
 				63A0381025E5364D0057B776 /* Main.swift in Sources */,
-				63A037D725E414A50057B776 /* CityCore.swift in Sources */,
 				63A0382525E5560D0057B776 /* Pollution.swift in Sources */,
 				63A037B025E320300057B776 /* BaseViewController.swift in Sources */,
 				63A037F725E4B9720057B776 /* CityWeather+CoreDataClass.swift in Sources */,
