@@ -16,6 +16,7 @@ final class CityWeatherVC: BaseViewController {
     @IBOutlet private var temperatureLabel: UILabel!
     @IBOutlet private var lowestTempLabel: UILabel!
     @IBOutlet private var highestTempLabel: UILabel!
+    @IBOutlet private var detailsStackView: UIStackView!
     @IBOutlet private var aqiView: UIView!
     @IBOutlet private var aqiSlider: UIView!
     @IBOutlet private var aqiMarkView: UIView!
@@ -24,6 +25,9 @@ final class CityWeatherVC: BaseViewController {
     @IBOutlet private var currentInfoCV: UICollectionView!
     //MARK:- Constraints
     @IBOutlet private var aqiMarkPos: NSLayoutConstraint!
+    @IBOutlet private var currentInfoCVHeight: NSLayoutConstraint!
+    //MARK:- Constants
+    private let currentInfoCellHeight: CGFloat = 50
     //MARK:- Properties
     private let context = CoreDataManager.shared.container.viewContext
     private lazy var locationManager: CLLocationManager = {
@@ -127,7 +131,7 @@ extension CityWeatherVC: UICollectionViewDelegateFlowLayout {
         } else if collectionView == currentInfoCV {
             let insets = currentInfoCV.contentInset.left + currentInfoCV.contentInset.right
             let totalWidth = currentInfoCV.frame.width - insets
-            return CGSize(width: totalWidth/2, height: 50)
+            return CGSize(width: totalWidth/2, height: currentInfoCellHeight)
         }
         return .zero
     }
@@ -155,13 +159,19 @@ extension CityWeatherVC: ApiRespondable {
     func didFetchSuccessfully(for params: [String : AnyHashable]) {
         switch params["ApiType"] as? String {
         case currentApi.id: refreshView()
-        case forecastApi.id: forecastCV.reloadData()
+        case forecastApi.id:
+            forecastCV.reloadData()
+            UIView.animate(withDuration: 0.4) {
+                self.forecastCV.isHidden = false
+                self.detailsStackView.layoutIfNeeded()}
         case pollutionApi.id:
             guard let pollution = pollutionApi.cityPollution?.list.first else { return }
             aqiLabel.text = pollution.main.aqiName
             aqiView.layoutIfNeeded()
             aqiMarkPos.constant = aqiSlider.bounds.width * pollution.main.relativePos
-            UIView.animate(withDuration: 0.8) { self.aqiSlider.layoutIfNeeded() }
+            UIView.animate(withDuration: 0.4) {
+                self.aqiView.isHidden = false
+                self.detailsStackView.layoutIfNeeded()}
         default: return
         }
         likeButton.isHidden = false
@@ -210,19 +220,27 @@ extension CityWeatherVC {
         aqiMarkView.layer.borderWidth = 2
         aqiMarkView.layer.borderColor = UIColor.black.cgColor
         aqiMarkView.layer.cornerRadius = aqiMarkView.bounds.height/2
+        aqiView.isHidden = true
     }
     private func setupCollectionView() {
         forecastCV.contentInset = UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 18)
+        forecastCV.isHidden = true
         currentInfoCV.contentInset = UIEdgeInsets(top: 0, left: 18, bottom: 18, right: 18)
+        currentInfoCV.isHidden = true
     }
     private func refreshView() {
-        guard let cityWeather = currentApi.cityWeather else { loader.stopAnimating(); return }
+        guard var cityWeather = currentApi.cityWeather else { loader.stopAnimating(); return }
         cityNameLabel.text = cityWeather.name
         weatherNameLabel.text = cityWeather.weather.first?.main
         temperatureLabel.text = "\(cityWeather.main.temp.i)°"
         lowestTempLabel.text = "L: \(cityWeather.main.tempMin.i)°"
         highestTempLabel.text = "H: \(cityWeather.main.tempMax.i)°"
-        currentInfoCV.reloadData()
         likeButton.isSelected = cityWeather.isPresent(in: context)
+        
+        currentInfoCVHeight.constant = cityWeather.summaryDict.count * currentInfoCellHeight
+        currentInfoCV.reloadData()
+        UIView.animate(withDuration: 0.4) {
+            self.currentInfoCV.isHidden = false
+            self.detailsStackView.layoutIfNeeded()}
     }
 }
