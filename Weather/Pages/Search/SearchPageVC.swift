@@ -17,6 +17,7 @@ final class SearchPageVC: BaseViewController {
         searchApi.delegate = self
         return searchApi
     }()
+    private var timer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +63,12 @@ extension SearchPageVC: UITableViewDelegate {
 //MARK:- UISearchBarDelegate
 extension SearchPageVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { [weak self] _ in
+            print("Search For Query: \(searchText)")
+        })
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
     }
 }
