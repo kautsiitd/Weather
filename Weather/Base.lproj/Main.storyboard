@@ -122,16 +122,13 @@
                                 <size key="shadowOffset" width="1" height="1"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="----" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xPe-cY-NzQ">
-                                <rect key="frame" x="193.5" y="141" width="27" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="ciF-lu-aFz"/>
-                                </constraints>
+                                <rect key="frame" x="193.5" y="138" width="27" height="15"/>
                                 <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lqo-sp-ghI">
-                                <rect key="frame" x="184" y="171" width="46" height="45"/>
+                                <rect key="frame" x="184" y="163" width="46" height="45"/>
                                 <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="44"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -139,7 +136,7 @@
                                 <size key="shadowOffset" width="1" height="1"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="DTe-KB-mEW">
-                                <rect key="frame" x="169" y="221" width="76" height="15"/>
+                                <rect key="frame" x="169" y="213" width="76" height="15"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L:--°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AV0-Lu-JKJ">
                                         <rect key="frame" x="0.0" y="0.0" width="32" height="15"/>
@@ -156,7 +153,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="lVQ-e2-rQq">
-                                <rect key="frame" x="0.0" y="276" width="414" height="560.5"/>
+                                <rect key="frame" x="0.0" y="268" width="414" height="560.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U1f-6C-mqL">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
@@ -346,7 +343,7 @@
                             <constraint firstItem="men-ZU-1qe" firstAttribute="trailing" secondItem="lVQ-e2-rQq" secondAttribute="trailing" id="ABw-aH-4QA"/>
                             <constraint firstAttribute="trailing" secondItem="jQ5-AH-ywG" secondAttribute="trailing" id="Dgk-mM-vYw"/>
                             <constraint firstItem="lVQ-e2-rQq" firstAttribute="top" secondItem="DTe-KB-mEW" secondAttribute="bottom" constant="40" id="IDs-W6-gGx"/>
-                            <constraint firstItem="xPe-cY-NzQ" firstAttribute="top" secondItem="Kk0-Av-cD0" secondAttribute="bottom" constant="8" symbolic="YES" id="Mb9-Rf-JPh"/>
+                            <constraint firstItem="xPe-cY-NzQ" firstAttribute="top" secondItem="Kk0-Av-cD0" secondAttribute="bottom" constant="5" id="Mb9-Rf-JPh"/>
                             <constraint firstItem="lqo-sp-ghI" firstAttribute="centerX" secondItem="men-ZU-1qe" secondAttribute="centerX" id="P71-S8-5ev"/>
                             <constraint firstItem="lVQ-e2-rQq" firstAttribute="leading" secondItem="men-ZU-1qe" secondAttribute="leading" id="TXz-Wy-AKZ"/>
                             <constraint firstItem="DTe-KB-mEW" firstAttribute="centerX" secondItem="men-ZU-1qe" secondAttribute="centerX" id="V8g-kp-pzd"/>
