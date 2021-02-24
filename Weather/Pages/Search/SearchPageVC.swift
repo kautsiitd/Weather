@@ -17,6 +17,7 @@ final class SearchPageVC: BaseViewController {
         searchApi.delegate = self
         return searchApi
     }()
+    private var tableCities: [City] = []
     private var timer: Timer?
     
     override func viewDidLoad() {
@@ -29,6 +30,7 @@ final class SearchPageVC: BaseViewController {
 //MARK:- ApiRespondable
 extension SearchPageVC: ApiRespondable {
     func didFetchSuccessfully(for params: [String : AnyHashable]) {
+        tableCities = searchApi.cities ?? []
         loader.stopAnimating()
         tableView.reloadData()
     }
@@ -41,18 +43,18 @@ extension SearchPageVC: ApiRespondable {
 //MARK:- UITableView
 extension SearchPageVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchApi.cities?.count ?? 0
+        return tableCities.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchCell.identifier) as! SearchCell
-        cell.title = searchApi.cities?[indexPath.row].name
+        cell.title = tableCities[indexPath.row].name
         return cell
     }
 }
 
 extension SearchPageVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let city = searchApi.cities?[indexPath.row] else { return }
+        let city = tableCities[indexPath.row]
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let cityWeatherVC = storyboard.instantiateViewController(withIdentifier: "CityWeatherVC") as! CityWeatherVC
         cityWeatherVC.coords = city.coord
@@ -65,7 +67,17 @@ extension SearchPageVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { [weak self] _ in
-            print("Search For Query: \(searchText)")
+            guard let self = self else { return }
+            self.tableCities = []
+            self.loader.startAnimating()
+            self.tableView.reloadData()
+            let cities = self.searchApi.cities ?? []
+            self.tableCities = searchText.isEmpty ? cities : cities.filter { (city: City) -> Bool in
+                // If dataItem matches the searchText, return true to include it
+                return city.name.range(of: searchText, options: .caseInsensitive) != nil
+            }
+            self.tableView.reloadData()
+            self.loader.stopAnimating()
         })
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
