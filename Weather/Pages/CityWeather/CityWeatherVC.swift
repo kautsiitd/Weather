@@ -67,7 +67,6 @@ final class CityWeatherVC: BaseViewController {
         forecastApi.makeGetRequest()
         pollutionApi.location = coords
         pollutionApi.makeGetRequest()
-        locationManager.stopUpdatingLocation()
     }}
     
     override func viewDidLoad() {
@@ -75,7 +74,7 @@ final class CityWeatherVC: BaseViewController {
         setupView()
         registerForNotifications()
         loader.startAnimating()
-        locationManager.startUpdatingLocation()
+        if query == nil && location == nil && coords == nil { locationManager.startUpdatingLocation() }
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -147,6 +146,7 @@ extension CityWeatherVC: CLLocationManagerDelegate {
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         location = locations.last!
+        locationManager.stopUpdatingLocation()
     }
 }
 
