@@ -167,10 +167,10 @@
                                         <rect key="frame" x="34.5" y="6" width="317" height="10"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MIu-7r-5KQ">
-                                                <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
+                                                <rect key="frame" x="0.0" y="-1" width="12" height="12"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="10" id="DKz-2e-ypR"/>
+                                                    <constraint firstAttribute="width" constant="12" id="DKz-2e-ypR"/>
                                                     <constraint firstAttribute="width" secondItem="MIu-7r-5KQ" secondAttribute="height" multiplier="1:1" id="as5-lf-MsJ"/>
                                                 </constraints>
                                             </view>
