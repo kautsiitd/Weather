@@ -27,7 +27,7 @@ final class CityWeatherVC: BaseViewController {
     @IBOutlet private var aqiMarkPos: NSLayoutConstraint!
     @IBOutlet private var currentInfoCVHeight: NSLayoutConstraint!
     //MARK:- Constants
-    private let currentInfoCellHeight: CGFloat = 50
+    private let currentInfoCellHeight: CGFloat = 60
     //MARK:- Properties
     private let context = CoreDataManager.shared.container.viewContext
     private lazy var locationManager: CLLocationManager = {
@@ -237,7 +237,7 @@ extension CityWeatherVC {
         highestTempLabel.text = "H: \(cityWeather.main.tempMax.i)°"
         likeButton.isSelected = cityWeather.isPresent(in: context)
         
-        currentInfoCVHeight.constant = cityWeather.summaryDict.count * currentInfoCellHeight
+        currentInfoCVHeight.constant = (cityWeather.summaryDict.count/2) * currentInfoCellHeight
         currentInfoCV.reloadData()
         UIView.animate(withDuration: 0.4) {
             self.currentInfoCV.isHidden = false
