@@ -48,11 +48,15 @@ extension ApiManager {
         guard let path = Bundle.main.path(forResource: delegate.fileName, ofType: delegate.fileExtension)
         else { throw FileError.notFound }
         let fileURL = URL(fileURLWithPath: path)
-        let data = try Data(contentsOf: fileURL, options: .mappedIfSafe)
-        do { try delegate.parse(data)
-            delegate.didFetchSuccessfully(for: [:]) }
-        catch let error {
-            delegate.didFail(with: FileError.custom(error), for: [:])
+        DispatchQueue.global().async {
+            do { let data = try Data(contentsOf: fileURL, options: .mappedIfSafe)
+                try delegate.parse(data)
+                DispatchQueue.main.async {
+                    delegate.didFetchSuccessfully(for: [:]) }
+                }
+            catch let error {
+                DispatchQueue.main.async { delegate.didFail(with: FileError.custom(error), for: [:]) }
+            }
         }
     }
 }

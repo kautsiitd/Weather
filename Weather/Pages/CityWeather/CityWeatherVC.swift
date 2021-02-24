@@ -195,8 +195,6 @@ extension CityWeatherVC {
 extension CityWeatherVC {
     private func setupView() {
         likeButton.isHidden = true
-        loader.color = .white
-        errorLabel.textColor = .white
         setupLikeButton()
         setupAqiView()
         setupCollectionView()
