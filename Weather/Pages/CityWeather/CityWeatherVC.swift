@@ -137,11 +137,11 @@ extension CityWeatherVC: UICollectionViewDelegateFlowLayout {
 extension CityWeatherVC: CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         switch manager.authorizationStatus {
-        case .denied, .notDetermined, .restricted:
+        case .denied, .restricted:
             query = "Globe"
         case .authorizedAlways, .authorizedWhenInUse:
             locationManager.startUpdatingLocation()
-        @unknown default: return
+        default: return
         }
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
