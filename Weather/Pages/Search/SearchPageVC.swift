@@ -22,6 +22,7 @@ final class SearchPageVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
         loader.startAnimating()
         searchApi.loadData()
     }
@@ -82,5 +83,12 @@ extension SearchPageVC: UISearchBarDelegate {
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.endEditing(true)
+    }
+}
+
+//MARK:- Helpers
+extension SearchPageVC {
+    private func setupTableView() {
+        tableView.keyboardDismissMode = .onDrag
     }
 }
