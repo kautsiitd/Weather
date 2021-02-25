@@ -51,7 +51,7 @@ extension SearchPageVC: UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchCell.identifier) as! SearchCell
-        cell.title = tableCities[indexPath.row].name
+        cell.city = tableCities[indexPath.row]
         return cell
     }
 }

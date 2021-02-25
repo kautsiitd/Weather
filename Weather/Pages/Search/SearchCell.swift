@@ -11,18 +11,19 @@ final class SearchCell: UITableViewCell {
     @IBOutlet private var titleLabel: UILabel!
     //MARK:- Properties
     static let identifier: String = "\(SearchCell.self)"
-    var title: String? {
+    var city: City? {
         didSet { refreshView() }
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        title = nil
+        city = nil
     }
 }
 
 extension SearchCell {
     private func refreshView() {
-        titleLabel.text = title
+        guard let city = city else { titleLabel.text = ""; return }
+        titleLabel.text = "\(city.name), \(city.country)"
     }
 }
